@@ -21,5 +21,5 @@ for dir in "$SCRIPT_DIR"/*/; do
 
     # Run stow for the folder
     echo "Stowing $folder_name"
-    # UNCOMMENT FOR PROD: stow "$folder_name"
+    stow --adopt "$folder_name"
 done
