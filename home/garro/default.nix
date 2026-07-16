@@ -16,4 +16,9 @@
   xdg.enable = true;
 
   programs.home-manager.enable = true;
+  programs.bash.enable = true;
+
+  home.sessionVariables = {
+    SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
+  };
 }

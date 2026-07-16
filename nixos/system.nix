@@ -36,6 +36,9 @@
       viAlias = true;
       vimAlias = true;
     };
+    ssh = {
+      startAgent = true;
+    };
   };
 
   fonts.packages = with pkgs; [
