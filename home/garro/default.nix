@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./hyprtoolkit.nix
+    ./hyprlauncher.nix
     ./hyprland.nix
     ./kitty.nix
     ./waybar.nix

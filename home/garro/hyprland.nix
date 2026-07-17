@@ -6,10 +6,6 @@ let
   typography = theme.typography;
 in
 {
-  home.packages = with pkgs; [
-    hyprlauncher
-  ];
-
   xdg.configFile."hypr/hyprland.lua".text = ''
     -- Personal Hyprland Configuration.
     -- Managed declaratively by Home Manager-
