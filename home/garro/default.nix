@@ -7,6 +7,7 @@
     ./hyprland.nix
     ./kitty.nix
     ./waybar.nix
+    ./mako.nix
   ];
 
   home.username = "garro";
