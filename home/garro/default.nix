@@ -6,6 +6,7 @@
     ./hyprlauncher.nix
     ./mako.nix
     ./hyprpaper.nix
+    ./hyprlock.nix
     ./hyprland.nix
     ./kitty.nix
     ./waybar.nix

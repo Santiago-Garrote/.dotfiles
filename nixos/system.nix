@@ -49,4 +49,6 @@
     git
     neovim
   ];
+
+  security.pam.services.hyprlock = { };
 }
