@@ -5,12 +5,11 @@ let
     name = "session-logout";
 
     runtimeInputs = [
-      pkgs.hyprshutdown
+      pkgs.uwsm
     ];
 
     text = ''
-      exec hyprshutdown \
-        --top-label "LOG OUT // CLOSE SESSION"
+      exec uwsm stop
     '';
   };
 

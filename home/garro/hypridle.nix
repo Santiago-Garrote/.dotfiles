@@ -6,7 +6,7 @@
 
     # Generate the configuration without relying on a
     # Wayland systemd session target.
-    package = null;
+    package = pkgs.hypridle;
 
     settings = {
       general = {

@@ -7,7 +7,7 @@ in
   services.hyprpaper = {
     enable = true;
 
-    package = null;
+    package = pkgs.hyprpaper;
 
     settings = {
       ipc = true;

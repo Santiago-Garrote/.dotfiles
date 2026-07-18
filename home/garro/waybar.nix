@@ -10,7 +10,7 @@ in
     enable = true;
 
     # Hyprland will start waybar through its lua config.
-    systemd.enable = false;
+    systemd.enable = true;
 
     settings = {
       mainBar = {

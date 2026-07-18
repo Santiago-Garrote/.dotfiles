@@ -22,6 +22,8 @@
 	font_prefix = "'";
 
 	desktop_icons = false;
+
+	desktop_launch_prefix = "uwsm app --";
       };
 
       ui = {
