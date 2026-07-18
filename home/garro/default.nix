@@ -8,6 +8,7 @@
     ./hyprpaper.nix
     ./hyprlock.nix
     ./hypridle.nix
+    ./wlogout.nix
     ./hyprland.nix
     ./kitty.nix
     ./waybar.nix
