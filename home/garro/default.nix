@@ -4,10 +4,11 @@
   imports = [
     ./hyprtoolkit.nix
     ./hyprlauncher.nix
+    ./mako.nix
+    ./hyprpaper.nix
     ./hyprland.nix
     ./kitty.nix
     ./waybar.nix
-    ./mako.nix
   ];
 
   home.username = "garro";
@@ -20,6 +21,7 @@
 
   programs.home-manager.enable = true;
   programs.bash.enable = true;
+  programs.firefox.enable = true;
 
   home.sessionVariables = {
     SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
