@@ -3,7 +3,9 @@
 {
   imports = [
     ./appearance.nix
+    ./qt.nix
     ./gtk.nix
+
     ./hyprtoolkit.nix
     ./hyprlauncher.nix
     ./mako.nix
