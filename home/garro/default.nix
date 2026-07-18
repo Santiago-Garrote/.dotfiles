@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./appearance.nix
     ./gtk.nix
     ./hyprtoolkit.nix
     ./hyprlauncher.nix
