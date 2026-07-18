@@ -5,6 +5,7 @@
     ./appearance.nix
     ./qt.nix
     ./gtk.nix
+    ./uwsm.nix
 
     ./hyprtoolkit.nix
     ./hyprlauncher.nix

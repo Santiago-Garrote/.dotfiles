@@ -24,10 +24,7 @@
   programs = { 
     hyprland = {
       enable = true;
-
-      # Keep the manual start-hyprland workflow used previously.
-      withUWSM = false;
-
+      withUWSM = true;
       xwayland.enable = true;
     };
     neovim = {
