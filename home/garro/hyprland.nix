@@ -132,5 +132,100 @@ in
       hl.bind(mainMod .. "+" .. key, hl.dsp.focus({ workspace = ws, on_current_monitor = true}))
       hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = ws }))
     end
-  '';
+
+    -- Industrial Amber window treatment
+    hl.config({
+      general = {
+        border_size = ${toString theme.geometry.borderWidth},
+        gaps_in = ${toString theme.geometry.gapIner},
+        gaps_out = ${toString theme.geometry.gapOuter},
+
+        ["col.active_border"] = "#${theme.colors.primary}",
+        ["col.inactive_border"] = "#${theme.colors.border}",
+
+        resize_on_border = true,
+        extend_border_grab_area = 8,
+      },
+
+      decoration = {
+        rounding = ${toString theme.geometry.radius},
+
+        active_opacity = 1.0,
+        inactive_opacity = 0.98,
+        fullscreen_opacity = 1.0,
+
+        dim_inactive = false,
+
+        blur = {
+          enabled = false,
+        },
+
+        shadow = {
+          enabled = false,
+        },
+      },
+
+      misc = {
+        disable_hyprland_logo = true,
+        disable_splash_rendering = true,
+        force_default_wallpaper = 0,
+
+        font_family = "${theme.typography.interface}",
+      },
+    })
+
+    -- Short, mechanical motion profile
+    hl.curve("mechanical", {
+      type = "bezier",
+      points = {
+        { 0.20, 0.00 },
+        { 0.00, 1.00 },
+      },
+    })
+
+    hl.animation({
+      leaf = "windows",
+      enabled = true,
+      speed = 1.6,
+      bezier = "mechanical",
+      style = "popin 98%",
+    })
+
+    hl.animation({
+      leaf = "windowsMove",
+      enabled = true,
+      speed = 1.2,
+      bezier = "mechanical",
+    })
+
+    hl.animation({
+      leaf = "layers",
+      enabled = true,
+      speed = 1.4,
+      bezier = "mechanical",
+      style = "fade",
+    })
+
+    hl.animation({
+      leaf = "fade",
+      enabled = true,
+      speed = 1.2,
+      bezier = "mechanical",
+    })
+
+    hl.animation({
+      leaf = "border",
+      enabled = true,
+      speed = 1.0,
+      bezier = "mechanical",
+    })
+
+    hl.animation({
+      leaf = "workspaces",
+      enabled = true,
+      speed = 2.0,
+      bezier = "mechanical",
+      style = "slidefade 8%",
+    })
+    '';
 }
