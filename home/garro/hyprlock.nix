@@ -13,19 +13,19 @@ in
     settings = {
       general = {
         hide_curson = true;
-	ignore_empty_input = true;
-	immediate_render = true;
+        ignore_empty_input = true;
+        immediate_render = true;
       };
 
       background = [
         {
-	  monitor = "eDP-1";
-	  path = "${wallpaper}";
+          monitor = "eDP-1";
+          path = "${wallpaper}";
 
-	  color = rgb colors.background;
-	  blur_passes = 0;
-	  brightness = 0.68;
-	}
+          color = rgb colors.background;
+          blur_passes = 0;
+          brightness = 0.68;
+        }
       ];
 
       "input-field" = [

@@ -24,7 +24,7 @@ in
       cursor_text_color = "#${colors.onPrimary}";
 
       selection_background = "#${colors.selection}";
-      selection_foreground= "#${colors.onSelection}";
+      selection_foreground = "#${colors.onSelection}";
 
       url_color = "#${colors.accent}";
 

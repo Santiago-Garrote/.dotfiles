@@ -17,8 +17,7 @@
         before_sleep_cmd = "loginctl lock-session";
 
         # Avoid needing a second input after waking up.
-        after_sleep_cmd =
-          "hyprctl dispatch 'hl.dsp.dpms({ action = \"enable\" })'";
+        after_sleep_cmd = "hyprctl dispatch 'hl.dsp.dpms({ action = \"enable\" })'";
 
         ignore_dbus_inhibit = false;
         ignore_systemd_inhibit = false;
@@ -35,10 +34,4 @@
       ];
     };
   };
-
-  # Make the daemon available to Hyprland autostart
-  # and for manual debugging.
-  home.packages = [
-    pkgs.hypridle
-  ];
 }

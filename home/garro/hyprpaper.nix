@@ -16,14 +16,10 @@ in
       wallpaper = [
         {
           monitor = "eDP-1";
-	  path = "${wallpaper}";
-	  fit_mode = "cover";
+          path = "${wallpaper}";
+          fit_mode = "cover";
         }
       ];
     };
   };
-
-  home.packages = with pkgs; [
-    hyprpaper
-  ];
 }

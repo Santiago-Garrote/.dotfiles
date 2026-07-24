@@ -3,7 +3,7 @@
 {
   services.hyprlauncher = {
     enable = true;
-    
+
     settings = {
       general = {
         grab_focus = true;
@@ -16,14 +16,14 @@
       finders = {
         default_finder = "desktop";
 
-	desktop_prefix = "";
-	unicode_prefix = ".";
-	math_prefix = "=";
-	font_prefix = "'";
+        desktop_prefix = "";
+        unicode_prefix = ".";
+        math_prefix = "=";
+        font_prefix = "'";
 
-	desktop_icons = false;
+        desktop_icons = false;
 
-	desktop_launch_prefix = "uwsm app --";
+        desktop_launch_prefix = "uwsm app --";
       };
 
       ui = {

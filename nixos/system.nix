@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 
 {
   # Enable the modern Nix CLI and flakes.
@@ -20,18 +20,12 @@
       "wheel"
     ];
   };
- 
-  programs = { 
+
+  programs = {
     hyprland = {
       enable = true;
       withUWSM = true;
       xwayland.enable = true;
-    };
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
     };
     ssh = {
       startAgent = true;
@@ -42,10 +36,10 @@
     ibm-plex
   ];
 
-  environment.systemPackages = with pkgs; [
-    git
-    neovim
-  ];
-
   security.pam.services.hyprlock = { };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 }

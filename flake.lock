@@ -40,7 +40,31 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "umu": "umu"
+      }
+    },
+    "umu": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "packaging/nix",
+        "lastModified": 1783985582,
+        "narHash": "sha256-xuCLvEE4vX2dgJjgE8ExQRpHqE0BZWLJGbDMDtTHa5g=",
+        "ref": "refs/heads/main",
+        "rev": "0b17996174fed0691022d11a5cbcb4f6583738de",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/Open-Wine-Components/umu-launcher.git"
+      },
+      "original": {
+        "dir": "packaging/nix",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/Open-Wine-Components/umu-launcher.git"
       }
     }
   },

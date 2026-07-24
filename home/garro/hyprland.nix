@@ -1,4 +1,4 @@
-{ pkgs, theme, ... }:
+{ theme, ... }:
 
 let
   colors = theme.colors;
@@ -117,6 +117,7 @@ in
     hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
     hl.bind(mainMod .. " + C", hl.dsp.window.close())
     hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+    hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
     hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("power-menu"))
     hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
     hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -227,5 +228,5 @@ in
       bezier = "mechanical",
       style = "slidefade 8%",
     })
-    '';
+  '';
 }

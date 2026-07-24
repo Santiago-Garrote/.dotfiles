@@ -8,7 +8,7 @@ in
     background = 0xFF${colors.background}
     base = 0xFF${colors.surface}
     alternate_base = 0xFF${colors.border}
-    
+
     text = 0xFF${colors.text}
     bright_text = 0xFF${colors.primary}
 

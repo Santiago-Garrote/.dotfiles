@@ -6,7 +6,7 @@ let
   typography = theme.typography;
 in
 {
-  services.mako ={
+  services.mako = {
     enable = true;
 
     settings = {

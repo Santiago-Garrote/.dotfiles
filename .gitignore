@@ -1,0 +1,7 @@
+result
+result-*
+*.pre-home-manager
+*~
+*.swp
+*.swo
+.direnv/

@@ -11,8 +11,11 @@ base
     surface = palette.neutral900;
     border = palette.neutral700;
 
+    foreground = palette.neutral200;
+    muted = palette.neutral500;
+
     text = palette.neutral200;
-    textMuted = palette.neutral950;
+    textMuted = palette.neutral500;
 
     primary = palette.amber500;
     onPrimary = palette.neutral950;

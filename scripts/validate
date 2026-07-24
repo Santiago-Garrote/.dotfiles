@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+nix fmt -- --check
+nix flake check
+nix eval ".#nixosConfigurations.laptop.config.system.build.toplevel.drvPath"
