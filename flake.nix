@@ -27,56 +27,11 @@
       pkgs = nixpkgs.legacyPackages.${system};
 
       umuPackage = umu.packages.${system}.default;
-      formatter = pkgs.writeShellApplication {
-        name = "dotfiles-format";
-        runtimeInputs = [
-          pkgs.git
-          pkgs.nixfmt-rfc-style
-        ];
-        text = ''
-          mode="format"
-
-          if [ "''${1:-}" = "--check" ]; then
-            mode="check"
-            shift
-          fi
-
-          if [ "$#" -gt 0 ]; then
-            files=("$@")
-          else
-            mapfile -t files < <(git ls-files '*.nix')
-          fi
-
-          formatted_files=()
-          for file in "''${files[@]}"; do
-            if [ "$file" = "nixos/hardware-configuration.nix" ]; then
-              continue
-            fi
-
-            formatted_files+=("$file")
-          done
-
-          if [ "''${#formatted_files[@]}" -eq 0 ]; then
-            exit 0
-          fi
-
-          if [ "$mode" = "check" ]; then
-            nixfmt --check "''${formatted_files[@]}"
-          else
-            nixfmt "''${formatted_files[@]}"
-          fi
-        '';
-      };
     in
     {
-      formatter.${system} = formatter;
+      formatter.${system} = import ./flake/formatter.nix { inherit pkgs; };
 
-      devShells.${system}.default = pkgs.mkShell {
-        packages = [
-          pkgs.quickshell
-          pkgs.qt6.qtdeclarative
-        ];
-      };
+      devShells.${system}.default = import ./flake/devshell.nix { inherit pkgs; };
 
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
         inherit system;

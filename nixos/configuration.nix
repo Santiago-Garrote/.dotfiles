@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./generated.nix
-    ./system.nix
+    ./hardware-configuration.nix
+    ./system
   ];
-  services.flatpak.enable = true;
 }

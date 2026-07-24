@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  wallpaper = ../../assets/wallpapers/industrial-amber.png;
+  wallpaper = ../../../../assets/wallpapers/industrial-amber.png;
 in
 {
   services.hyprpaper = {

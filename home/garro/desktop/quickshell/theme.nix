@@ -1,15 +1,6 @@
 { theme }:
 
-{ pkgs, ... }:
-
 {
-  home.packages = [
-    pkgs.quickshell
-  ];
-
-  xdg.configFile."quickshell/shell.qml".source = ./widgets/quickshell/shell.qml;
-  xdg.configFile."quickshell/components".source = ./widgets/quickshell/components;
-
   xdg.configFile."quickshell/Theme.qml".text = ''
     import QtQuick
 

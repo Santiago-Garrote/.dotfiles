@@ -1,7 +1,7 @@
 { theme, ... }:
 
 let
-  wallpaper = ../../assets/wallpapers/industrial-amber.png;
+  wallpaper = ../../../../assets/wallpapers/industrial-amber.png;
   colors = theme.colors;
   rgb = value: "rgb(${value})";
   rgba = value: alpha: "rgba(${value}${alpha})";
