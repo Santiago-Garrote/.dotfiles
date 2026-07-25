@@ -1,6 +1,6 @@
 {
   typography = {
-    interface = "IBM Plex Sans";
+    interface = "IBM Plex Mono";
     monospace = "IBM Plex Mono";
   };
 

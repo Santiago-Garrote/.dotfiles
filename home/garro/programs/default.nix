@@ -7,6 +7,7 @@
 {
   imports = [
     ./bash
+    ./direnv
     ./firefox
     (import ./hyprlock { inherit theme; })
     (import ./kitty { inherit theme; })

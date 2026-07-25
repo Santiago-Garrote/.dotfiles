@@ -104,13 +104,13 @@ in
       font-weight: 600;
     }
 
-    #network.disconneted {
+    #network.disconnected {
       color: @error;
     }
 
-    #battery.chargin,
+    #battery.charging,
     #battery.plugged {
-      color: @succes;
+      color: @success;
     }
 
     #battery.warning {
@@ -126,7 +126,7 @@ in
       border: ${toString geometry.borderWidth}px solid @accent;
     }
 
-    toolpit label {
+    tooltip label {
       color: @text_color;
     }
   '';
