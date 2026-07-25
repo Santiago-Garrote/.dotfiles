@@ -7,7 +7,7 @@
     ripgrep
     fd
     nixd
-    nixfmt-rfc-style
+    nixfmt
 
     inkscape
     krita

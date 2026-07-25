@@ -10,7 +10,7 @@ Neovim wrapper. Nix also installs external tools that should be available from
 
 - `git`, `ripgrep`, and `fd` for general editor and shell workflows.
 - `nixd` for Nix language server support.
-- `nixfmt-rfc-style`, exposed as `nixfmt`, for Nix formatting.
+- `nixfmt` for Nix formatting.
 
 Project-specific tools should usually live in a project `devShell`. In this
 repository, QML and Quickshell tools are provided by the flake dev shell.

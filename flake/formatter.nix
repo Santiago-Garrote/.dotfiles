@@ -4,7 +4,7 @@ pkgs.writeShellApplication {
   name = "dotfiles-format";
   runtimeInputs = [
     pkgs.git
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
   ];
   text = ''
     mode="format"
