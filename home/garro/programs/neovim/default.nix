@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  neovimConfigPath = "${config.home.homeDirectory}/.dotfiles/home/garro/programs/neovim/config";
-in
 {
   programs.neovim = {
     enable = true;
@@ -23,5 +20,7 @@ in
     ];
   };
 
-  xdg.configFile."nvim".source = config.lib.file.mkOutOfStoreSymlink neovimConfigPath;
+  xdg.configFile."nvim/init.lua".source = ./config/init.lua;
+  xdg.configFile."nvim/lazy-lock.json".source = ./config/lazy-lock.json;
+  xdg.configFile."nvim/lua".source = ./config/lua;
 }
