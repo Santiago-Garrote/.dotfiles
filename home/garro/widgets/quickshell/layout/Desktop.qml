@@ -7,13 +7,11 @@ Scope {
 
 	required property QtObject theme
 
-	FloatingWindow {
-		id: clockWindow
-
-		title: "Desktop clock"
-		implicitWidth: 280
-		implicitHeight: 92
-		color: "transparent"
+	WidgetWindow {
+		placement: "top-right"
+		windowWidth: 280
+		windowHeight: 92
+		margin: root.theme.spacing.gapOuter
 
 		ClockWidget {
 			anchors.fill: parent
