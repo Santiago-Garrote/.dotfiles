@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Wayland
 import QtQuick
 
 PanelWindow {
@@ -16,6 +17,11 @@ PanelWindow {
 	color: "transparent"
 	exclusionMode: ExclusionMode.Ignore
 	focusable: false
+	aboveWindows: false
+
+	WlrLayershell.layer: WlrLayer.Background
+	WlrLayershell.namespace: "quickshell-desktop-widgets"
+	WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 
 	anchors {
 		left: placement.indexOf("left") !== -1
