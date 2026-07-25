@@ -55,7 +55,7 @@ in
         border_size = 2,
 
         col = {
-          active_border = "rgba(${colors.primary}ff)",
+          active_border = "rgba(${colors.accent}ff)",
           inactive_border = "rgba(${colors.border}ff)",
         },
 
@@ -141,7 +141,7 @@ in
         gaps_in = ${toString theme.geometry.gapInner},
         gaps_out = ${toString theme.geometry.gapOuter},
 
-        ["col.active_border"] = "#${theme.colors.primary}",
+        ["col.active_border"] = "#${theme.colors.accent}",
         ["col.inactive_border"] = "#${theme.colors.border}",
 
         resize_on_border = true,

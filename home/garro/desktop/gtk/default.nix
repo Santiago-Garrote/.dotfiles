@@ -26,12 +26,12 @@ in
 
       extraCss = ''
         @define-color theme_bg_color #${colors.background};
-        @define-color theme_fg_color #${colors.text};
+        @define-color theme_fg_color #${colors.foreground};
 
         @define-color theme_base_color #${colors.surface};
-        @define-color theme_text_color #${colors.text};
+        @define-color theme_text_color #${colors.foreground};
 
-        @define-color theme_selected_bg_color #${colors.primary};
+        @define-color theme_selected_bg_color #${colors.accent};
         @define-color theme_selected_fg_color #${colors.onPrimary};
 
         @define-color borders #${colors.border};
@@ -47,7 +47,7 @@ in
 
         tooltip {
           background-color: #${colors.surface};
-          color: #${colors.text};
+          color: #${colors.foreground};
           border: ${toString geometry.borderWidth}px solid #${colors.border};
           border-radius: ${toString geometry.radius}px;
         }
@@ -62,16 +62,16 @@ in
 
       extraCss = ''
         @define-color window_bg_color #${colors.background};
-        @define-color window_fg_color #${colors.text};
+        @define-color window_fg_color #${colors.foreground};
 
         @define-color view_bg_color #${colors.surface};
-        @define-color view_fg_color #${colors.text};
+        @define-color view_fg_color #${colors.foreground};
 
         @define-color headerbar_bg_color #${colors.surface};
-        @define-color headerbar_fg_color #${colors.text};
+        @define-color headerbar_fg_color #${colors.foreground};
 
-        @define-color accent_color #${colors.primary};
-        @define-color accent_bg_color #${colors.primary};
+        @define-color accent_color #${colors.accent};
+        @define-color accent_bg_color #${colors.accent};
         @define-color accent_fg_color #${colors.onPrimary};
 
         @define-color borders #${colors.border};
@@ -87,7 +87,7 @@ in
 
         tooltip {
           background-color: #${colors.surface};
-          color: #${colors.text};
+          color: #${colors.foreground};
           border: ${toString geometry.borderWidth}px solid #${colors.border};
           border-radius: ${toString geometry.radius}px;
         }

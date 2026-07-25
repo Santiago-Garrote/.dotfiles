@@ -13,10 +13,10 @@ in
      @define-color surface #${colors.surface};
      @define-color border_color #${colors.border};
 
-     @define-color text_color #${colors.text};
-     @define-color text_muted #${colors.textMuted};
+     @define-color text_color #${colors.foreground};
+     @define-color text_muted #${colors.muted};
 
-     @define-color primary #${colors.primary};
+     @define-color primary #${colors.accent};
      @define-color on_primary #${colors.onPrimary};
 
      @define-color accent #${colors.accent};

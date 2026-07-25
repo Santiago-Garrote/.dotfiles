@@ -22,10 +22,10 @@ in
     border-radius = geometry.radius;
 
     background-color = color colors.surface;
-    text-color = color colors.text;
+    text-color = color colors.foreground;
     border-color = color colors.border;
 
-    progress-color = "over ${color colors.primary}";
+    progress-color = "over ${color colors.accent}";
 
     font = "${typography.interface} 10";
     text-alignment = "left";

@@ -9,11 +9,11 @@ in
   services.mako.extraConfig = ''
     [urgency=low]
     border-color=${color colors.border}
-    text-color=${color colors.textMuted}
+    text-color=${color colors.muted}
     default-timeout=4000
 
     [urgency=normal]
-    border-color=${color colors.primary}
+    border-color=${color colors.accent}
 
     [urgency=critical]
     background-color=${color colors.error}

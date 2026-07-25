@@ -9,10 +9,10 @@ in
     base = 0xFF${colors.surface}
     alternate_base = 0xFF${colors.border}
 
-    text = 0xFF${colors.text}
-    bright_text = 0xFF${colors.primary}
+    text = 0xFF${colors.foreground}
+    bright_text = 0xFF${colors.accent}
 
-    accent = 0xFF${colors.primary}
+    accent = 0xFF${colors.accent}
     accent_secondary = 0xFF${colors.success}
 
     h1_size = 17

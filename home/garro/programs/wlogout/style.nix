@@ -12,7 +12,7 @@
     }
 
     button {
-      color: #${theme.colors.text};
+      color: #${theme.colors.foreground};
 
       background-color: #${theme.colors.surface};
       background-image: none;
@@ -31,14 +31,14 @@
     button:focus {
       color: #${theme.colors.onPrimary};
 
-      background-color: #${theme.colors.primary};
+      background-color: #${theme.colors.accent};
       background-image: none;
 
-      border-color: #${theme.colors.primary};
+      border-color: #${theme.colors.accent};
     }
 
     #logout {
-      border-color: #${theme.colors.primary};
+      border-color: #${theme.colors.accent};
     }
 
     #reboot,

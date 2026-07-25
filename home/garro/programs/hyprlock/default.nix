@@ -48,8 +48,8 @@ in
           fade_on_empty = false;
 
           inner_color = rgba theme.colors.surface "E6";
-          outer_color = rgb theme.colors.primary;
-          font_color = rgb theme.colors.text;
+          outer_color = rgb theme.colors.accent;
+          font_color = rgb theme.colors.foreground;
 
           check_color = rgb theme.colors.success;
           fail_color = rgb theme.colors.error;
@@ -67,7 +67,7 @@ in
           monitor = "eDP-1";
 
           text = "SESSION // LOCKED";
-          color = rgb theme.colors.primary;
+          color = rgb theme.colors.accent;
 
           font_size = 13;
           font_family = theme.typography.monospace;
@@ -81,7 +81,7 @@ in
           monitor = "eDP-1";
 
           text = "$TIME";
-          color = rgb theme.colors.text;
+          color = rgb theme.colors.foreground;
 
           font_size = 64;
           font_family = theme.typography.monospace;
@@ -95,7 +95,7 @@ in
           monitor = "eDP-1";
 
           text = "$USER";
-          color = rgb theme.colors.textMuted;
+          color = rgb theme.colors.muted;
 
           font_size = 14;
           font_family = theme.typography.monospace;
@@ -109,7 +109,7 @@ in
           monitor = "eDP-1";
 
           text = "ESC CLEAR // ENTER AUTH";
-          color = rgb theme.colors.textMuted;
+          color = rgb theme.colors.muted;
 
           font_size = 11;
           font_family = theme.typography.monospace;
