@@ -1,6 +1,7 @@
 import Quickshell
 import QtQuick
 import "components"
+import "widgets"
 
 FloatingWindow {
 	id: root
@@ -10,11 +11,11 @@ FloatingWindow {
 	}
 
 	title: "Desktop widgets"
-	width: 280
-	height: 92
+	implicitWidth: 280
+	implicitHeight: 92
 	color: "transparent"
 
-	StatusWidget {
+	ClockWidget {
 		anchors.fill: parent
 		theme: theme
 	}

@@ -1,18 +1,22 @@
 import QtQuick
 
 Rectangle {
+	id: root
+
 	required property QtObject theme
+	default property alias content: content.data
+
+	property int padding: theme.spacing.medium
 
 	color: theme.colors.surface
 	border.color: theme.colors.border
 	border.width: theme.borderWidth
 	radius: theme.cornerRadius
 
-	Text {
-		anchors.centerIn: parent
-		text: "Desktop widgets"
-		color: theme.colors.foreground
-		font.family: theme.fonts.ui
-		font.pixelSize: theme.fontSizes.medium
+	Item {
+		id: content
+
+		anchors.fill: parent
+		anchors.margins: root.padding
 	}
 }
