@@ -1,22 +1,13 @@
 import Quickshell
 import QtQuick
-import "components"
-import "widgets"
+import "layout"
 
-FloatingWindow {
-	id: root
-
+Scope {
 	Theme {
 		id: theme
 	}
 
-	title: "Desktop widgets"
-	implicitWidth: 280
-	implicitHeight: 92
-	color: "transparent"
-
-	ClockWidget {
-		anchors.fill: parent
+	Desktop {
 		theme: theme
 	}
 }
