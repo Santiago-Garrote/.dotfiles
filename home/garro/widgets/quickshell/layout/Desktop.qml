@@ -20,12 +20,12 @@ Scope {
 	}
 
 	WidgetWindow {
-		placement: "bottom-left"
-		windowWidth: 360
-		windowHeight: 104
+		placement: "top-left"
+		windowWidth: 300
+		windowHeight: 68
 		margin: root.theme.spacing.gapOuter
 
-		MediaWidget {
+		WorkspaceWidget {
 			anchors.fill: parent
 			theme: root.theme
 		}

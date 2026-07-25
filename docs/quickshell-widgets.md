@@ -24,13 +24,13 @@ Waybar currently owns:
 
 ## Candidate Widgets
 
-- Workspaces: first candidate for Hyprland integration, once the repository has
-  a reliable data source for workspace state.
-- Media: current MPRIS-backed widget, useful when a media player is active.
-- Battery: useful laptop widget, should come before removing Waybar battery.
-- Network: useful but should handle disconnected, wired, and Wi-Fi states
-  explicitly.
-- Clock: useful as a layout smoke test, but not final visual direction.
+- Workspace indicator: Hyprland-backed widget showing active desktop state.
+- Battery: laptop status widget.
+- Wi-Fi bars: network state rendered as geometric signal bars.
+- Computer parts performance: CPU, memory, temperature, or disk telemetry.
+- Clock: transistor-inspired display, not a generic large clock.
+- Mouse position: screen coordinate readout once a reliable pointer data source
+  is available.
 
 ## Design Rules
 
@@ -39,3 +39,5 @@ Waybar currently owns:
 - Functional widgets live in `widgets/`.
 - Shell commands should stay out of visual components.
 - Theme values come from `Theme.qml`, generated from the shared Nix theme.
+- Widgets must use theme tokens for colors, typography, spacing, borders, and
+  radii.
