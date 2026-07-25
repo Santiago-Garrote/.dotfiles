@@ -29,9 +29,11 @@ pkgs.writeText "Theme.qml" ''
     }
 
     readonly property QtObject fontSizes: QtObject {
-      readonly property int small: 10
-      readonly property int medium: 12
-      readonly property int large: 14
+      readonly property int small: ${toString theme.typography.sizes.small}
+      readonly property int medium: ${toString theme.typography.sizes.medium}
+      readonly property int large: ${toString theme.typography.sizes.large}
+      readonly property int clockDigit: ${toString theme.typography.sizes.clockDigit}
+      readonly property int clockSeparator: ${toString theme.typography.sizes.clockSeparator}
     }
 
     readonly property QtObject sizes: QtObject {
