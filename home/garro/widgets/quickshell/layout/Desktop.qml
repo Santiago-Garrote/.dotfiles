@@ -39,4 +39,18 @@ Scope {
 			theme: root.theme
 		}
 	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-right"
+		windowWidth: 240
+		windowHeight: 78
+		margin: root.theme.spacing.gapOuter
+
+		SystemStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
 }
