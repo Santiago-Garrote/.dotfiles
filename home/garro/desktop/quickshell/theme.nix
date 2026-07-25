@@ -25,7 +25,7 @@
       readonly property int borderWidth: ${toString theme.geometry.borderWidth}
 
       readonly property QtObject fonts: QtObject {
-        readonly property string interface: "${theme.typography.interface}"
+        readonly property string ui: "${theme.typography.interface}"
         readonly property string monospace: "${theme.typography.monospace}"
       }
 

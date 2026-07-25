@@ -7,7 +7,7 @@ Item {
 		anchors.centerIn: parent
 		text: "Hello, World!"
 		color: theme.colors.foreground
-		font.family: theme.fonts.interface
+		font.family: theme.fonts.ui
 		font.pixelSize: theme.fontSizes.medium
 	}
 }
