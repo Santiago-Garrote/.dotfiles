@@ -2,20 +2,19 @@ import Quickshell
 import QtQuick
 import "components"
 
-PanelWindow {
+FloatingWindow {
+	id: root
+
 	Theme {
 		id: theme
 	}
 
-	anchors {
-		top: true
-		left: true
-		right: true
-	}
+	title: "Desktop widgets"
+	width: 280
+	height: 92
+	color: "transparent"
 
-	implicitHeight: theme.sizes.barHeight
-
-	Bar {
+	StatusWidget {
 		anchors.fill: parent
 		theme: theme
 	}
