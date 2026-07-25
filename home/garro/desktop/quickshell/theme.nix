@@ -17,7 +17,7 @@
       readonly property QtObject spacing: QtObject {
         readonly property int small: ${toString theme.geometry.spacingSmall}
         readonly property int medium: ${toString theme.geometry.spacingMedium}
-        readonly property int gapInner: ${toString theme.geometry.gapIner}
+        readonly property int gapInner: ${toString theme.geometry.gapInner}
         readonly property int gapOuter: ${toString theme.geometry.gapOuter}
       }
 

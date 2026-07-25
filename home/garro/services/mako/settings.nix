@@ -15,7 +15,7 @@ in
     height = 100;
 
     outer-margin = geometry.gapOuter;
-    margin = geometry.gapIner;
+    margin = geometry.gapInner;
     padding = geometry.spacingMedium;
 
     border-size = geometry.borderWidth;

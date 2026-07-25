@@ -20,7 +20,7 @@
       border: ${toString theme.geometry.borderWidth}px solid #${theme.colors.border};
       border-radius: ${toString theme.geometry.radius}px;
 
-      margin: ${toString theme.geometry.gapIner}px;
+      margin: ${toString theme.geometry.gapInner}px;
       padding: 24px;
 
       box-shadow: none;

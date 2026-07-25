@@ -8,7 +8,7 @@
     radius = 0;
     borderWidth = 1;
 
-    gapIner = 5;
+    gapInner = 5;
     gapOuter = 10;
 
     spacingSmall = 3;

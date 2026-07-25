@@ -50,7 +50,7 @@ in
 
     hl.config({
       general = {
-        gaps_in = ${toString geometry.gapIner},
+        gaps_in = ${toString geometry.gapInner},
         gaps_out = ${toString geometry.gapOuter},
         border_size = 2,
 
@@ -138,7 +138,7 @@ in
     hl.config({
       general = {
         border_size = ${toString theme.geometry.borderWidth},
-        gaps_in = ${toString theme.geometry.gapIner},
+        gaps_in = ${toString theme.geometry.gapInner},
         gaps_out = ${toString theme.geometry.gapOuter},
 
         ["col.active_border"] = "#${theme.colors.primary}",
