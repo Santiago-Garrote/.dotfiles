@@ -1,6 +1,15 @@
+{ pkgs, theme }:
+
+let
+  themeFile = import ./theme.nix { inherit pkgs theme; };
+
+  configTree = pkgs.runCommand "quickshell-config" { } ''
+    mkdir -p "$out"
+    cp -r ${../../widgets/quickshell}/. "$out/"
+    chmod -R u+w "$out"
+    cp ${themeFile} "$out/Theme.qml"
+  '';
+in
 {
-  xdg.configFile."quickshell/shell.qml".source = ../../widgets/quickshell/shell.qml;
-  xdg.configFile."quickshell/components".source = ../../widgets/quickshell/components;
-  xdg.configFile."quickshell/layout".source = ../../widgets/quickshell/layout;
-  xdg.configFile."quickshell/widgets".source = ../../widgets/quickshell/widgets;
+  xdg.configFile."quickshell".source = configTree;
 }

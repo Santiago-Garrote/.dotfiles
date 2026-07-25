@@ -1,9 +1,8 @@
-{ theme }:
+{ pkgs, theme }:
 
 {
   imports = [
-    ./files.nix
+    (import ./files.nix { inherit pkgs theme; })
     ./package.nix
-    (import ./theme.nix { inherit theme; })
   ];
 }

@@ -1,4 +1,4 @@
-{ theme }:
+{ pkgs, theme }:
 
 {
   imports = [
@@ -8,7 +8,7 @@
     (import ./hyprland { inherit theme; })
     (import ./hyprtoolkit { inherit theme; })
     (import ./qt { inherit theme; })
-    (import ./quickshell { inherit theme; })
+    (import ./quickshell { inherit pkgs theme; })
     ./uwsm
     (import ./waybar { inherit theme; })
   ];

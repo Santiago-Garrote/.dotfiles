@@ -8,7 +8,7 @@ in
 {
   imports = [
     ./core
-    (import ./desktop { inherit theme; })
+    (import ./desktop { inherit pkgs theme; })
     (import ./programs { inherit pkgs theme umuPackage; })
     (import ./services { inherit pkgs theme; })
   ];
