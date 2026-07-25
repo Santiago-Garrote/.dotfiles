@@ -5,6 +5,7 @@ import QtQuick
 PanelWindow {
 	id: root
 
+	required property QtObject theme
 	default property alias content: content.data
 
 	property string placement: "top-right"
@@ -41,5 +42,16 @@ PanelWindow {
 		id: content
 
 		anchors.fill: parent
+		opacity: hoverHandler.hovered ? root.theme.opacity.widgetFocused : root.theme.opacity.widgetUnfocused
+
+		Behavior on opacity {
+			NumberAnimation {
+				duration: root.theme.motion.enabled ? root.theme.motion.widgetFadeMs : 0
+			}
+		}
+
+		HoverHandler {
+			id: hoverHandler
+		}
 	}
 }

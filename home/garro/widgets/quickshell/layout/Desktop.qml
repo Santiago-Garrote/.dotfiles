@@ -8,6 +8,7 @@ Scope {
 	required property QtObject theme
 
 	WidgetWindow {
+		theme: root.theme
 		placement: "top-right"
 		windowWidth: 280
 		windowHeight: 92
@@ -20,6 +21,7 @@ Scope {
 	}
 
 	WidgetWindow {
+		theme: root.theme
 		placement: "top-left"
 		windowWidth: 300
 		windowHeight: 68

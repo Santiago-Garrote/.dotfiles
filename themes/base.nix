@@ -17,5 +17,11 @@
 
   motion = {
     enabled = true;
+    widgetFadeMs = 120;
+  };
+
+  opacity = {
+    widgetFocused = 1.0;
+    widgetUnfocused = 0.42;
   };
 }

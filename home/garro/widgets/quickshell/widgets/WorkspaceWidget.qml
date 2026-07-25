@@ -5,31 +5,24 @@ import "../components"
 Panel {
 	id: root
 
-	Row {
+	readonly property var workspace: Hyprland.focusedWorkspace
+	readonly property string workspaceLabel: workspace !== null ? workspace.id.toString() : "--"
+
+	Rectangle {
 		anchors.centerIn: parent
-		spacing: theme.spacing.small
+		width: 84
+		height: 28
+		radius: theme.cornerRadius
+		border.width: theme.borderWidth
+		border.color: theme.colors.accent
+		color: theme.colors.background
 
-		Repeater {
-			model: Hyprland.workspaces.values
-
-			Rectangle {
-				required property var modelData
-
-				width: 24
-				height: 24
-				radius: theme.cornerRadius
-				border.width: theme.borderWidth
-				border.color: modelData.focused ? theme.colors.accent : theme.colors.border
-				color: modelData.active ? theme.colors.surface : theme.colors.background
-
-				Label {
-					anchors.centerIn: parent
-					theme: root.theme
-					text: modelData.id.toString()
-					textColor: modelData.focused ? theme.colors.accent : theme.colors.muted
-					size: theme.fontSizes.small
-				}
-			}
+		Label {
+			anchors.centerIn: parent
+			theme: root.theme
+			text: "WS " + root.workspaceLabel
+			textColor: theme.colors.accent
+			size: theme.fontSizes.small
 		}
 	}
 }

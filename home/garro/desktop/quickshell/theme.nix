@@ -37,5 +37,15 @@ pkgs.writeText "Theme.qml" ''
     readonly property QtObject sizes: QtObject {
       readonly property int barHeight: 30
     }
+
+    readonly property QtObject opacity: QtObject {
+      readonly property real widgetFocused: ${toString theme.opacity.widgetFocused}
+      readonly property real widgetUnfocused: ${toString theme.opacity.widgetUnfocused}
+    }
+
+    readonly property QtObject motion: QtObject {
+      readonly property bool enabled: ${if theme.motion.enabled then "true" else "false"}
+      readonly property int widgetFadeMs: ${toString theme.motion.widgetFadeMs}
+    }
   }
 ''
