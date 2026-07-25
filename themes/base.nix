@@ -21,7 +21,7 @@
   };
 
   opacity = {
-    widgetFocused = 1.0;
-    widgetUnfocused = 0.42;
+    widgetVisible = 1.0;
+    widgetHidden = 0.0;
   };
 }

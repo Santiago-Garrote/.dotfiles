@@ -39,8 +39,8 @@ pkgs.writeText "Theme.qml" ''
     }
 
     readonly property QtObject opacity: QtObject {
-      readonly property real widgetFocused: ${toString theme.opacity.widgetFocused}
-      readonly property real widgetUnfocused: ${toString theme.opacity.widgetUnfocused}
+      readonly property real widgetVisible: ${toString theme.opacity.widgetVisible}
+      readonly property real widgetHidden: ${toString theme.opacity.widgetHidden}
     }
 
     readonly property QtObject motion: QtObject {

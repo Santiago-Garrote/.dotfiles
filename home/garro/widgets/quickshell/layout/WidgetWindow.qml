@@ -12,6 +12,7 @@ PanelWindow {
 	property int margin: 0
 	property int windowWidth: 280
 	property int windowHeight: 92
+	property bool shown: true
 
 	implicitWidth: windowWidth
 	implicitHeight: windowHeight
@@ -42,16 +43,12 @@ PanelWindow {
 		id: content
 
 		anchors.fill: parent
-		opacity: hoverHandler.hovered ? root.theme.opacity.widgetFocused : root.theme.opacity.widgetUnfocused
+		opacity: root.shown ? root.theme.opacity.widgetVisible : root.theme.opacity.widgetHidden
 
 		Behavior on opacity {
 			NumberAnimation {
 				duration: root.theme.motion.enabled ? root.theme.motion.widgetFadeMs : 0
 			}
-		}
-
-		HoverHandler {
-			id: hoverHandler
 		}
 	}
 }
