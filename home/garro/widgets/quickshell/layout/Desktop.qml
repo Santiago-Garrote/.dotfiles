@@ -18,4 +18,16 @@ Scope {
 			theme: root.theme
 		}
 	}
+
+	WidgetWindow {
+		placement: "bottom-left"
+		windowWidth: 360
+		windowHeight: 104
+		margin: root.theme.spacing.gapOuter
+
+		MediaWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
 }
