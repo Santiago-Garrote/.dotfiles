@@ -2,13 +2,13 @@
   typography = {
     interface = "IBM Plex Mono";
     monospace = "IBM Plex Mono";
+    display = "DSEG7 Classic";
 
     sizes = {
       small = 10;
       medium = 12;
       large = 14;
-      clockDigit = 36;
-      clockSeparator = 30;
+      clockDigit = 58;
     };
   };
 

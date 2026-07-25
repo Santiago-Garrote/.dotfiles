@@ -24,11 +24,20 @@
     }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      overlays = [
+        (final: _prev: {
+          dseg = final.callPackage ./packages/dseg.nix { };
+        })
+      ];
+      pkgs = import nixpkgs {
+        inherit overlays system;
+      };
 
       umuPackage = umu.packages.${system}.default;
     in
     {
+      packages.${system}.dseg = pkgs.dseg;
+
       formatter.${system} = import ./flake/formatter.nix { inherit pkgs; };
 
       devShells.${system}.default = import ./flake/devshell.nix { inherit pkgs; };
@@ -37,6 +46,8 @@
         inherit system;
 
         modules = [
+          { nixpkgs.overlays = overlays; }
+
           ./nixos/configuration.nix
 
           home-manager.nixosModules.home-manager

@@ -26,6 +26,7 @@ pkgs.writeText "Theme.qml" ''
     readonly property QtObject fonts: QtObject {
       readonly property string ui: "${theme.typography.interface}"
       readonly property string monospace: "${theme.typography.monospace}"
+      readonly property string display: "${theme.typography.display}"
     }
 
     readonly property QtObject fontSizes: QtObject {
@@ -33,7 +34,6 @@ pkgs.writeText "Theme.qml" ''
       readonly property int medium: ${toString theme.typography.sizes.medium}
       readonly property int large: ${toString theme.typography.sizes.large}
       readonly property int clockDigit: ${toString theme.typography.sizes.clockDigit}
-      readonly property int clockSeparator: ${toString theme.typography.sizes.clockSeparator}
     }
 
     readonly property QtObject sizes: QtObject {

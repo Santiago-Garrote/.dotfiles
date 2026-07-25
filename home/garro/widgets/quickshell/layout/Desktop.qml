@@ -16,8 +16,8 @@ Scope {
 		theme: root.theme
 		shown: root.widgetsVisible
 		placement: "top-right"
-		windowWidth: 280
-		windowHeight: 92
+		windowWidth: 460
+		windowHeight: 110
 		margin: root.theme.spacing.gapOuter
 
 		ClockWidget {
