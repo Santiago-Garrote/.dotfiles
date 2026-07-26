@@ -14,7 +14,8 @@ Item {
 	readonly property bool connected: connectionType.length > 0
 	readonly property string networkMode: connected ? connectionType.toUpperCase() : "OFFLINE"
 	readonly property string networkName: connectionName.length > 0 ? connectionName : "--"
-	readonly property int displayedPercent: signalPercent >= 0 ? signalPercent : (connected ? 100 : 0)
+	readonly property int displayedPercent: signalPercent >= 0 ? signalPercent : 0
+	readonly property string percentText: signalPercent >= 0 ? signalPercent + "%" : "--%"
 	readonly property int filledSegments: Math.ceil(displayedPercent / 10)
 
 	function updateStatus(): void {
@@ -24,7 +25,9 @@ Item {
 
 	function parseDeviceStatus(output: string): void {
 		const rows = output.trim().split("\n");
-		let active = null;
+		let activeDevices = [];
+		let wifiDevice = null;
+		let ethernetDevice = null;
 
 		for (const row of rows) {
 			const fields = row.split(":");
@@ -34,13 +37,18 @@ Item {
 			const deviceType = fields[1];
 			const state = fields[2];
 			if (deviceType !== "loopback" && state.indexOf("connected") === 0) {
-				active = {
+				activeDevices.push({
 					type: deviceType,
 					name: fields.slice(3).join(":")
-				};
-				break;
+				});
+				if (deviceType === "wifi" && wifiDevice === null)
+					wifiDevice = activeDevices[activeDevices.length - 1];
+				if (deviceType === "ethernet" && ethernetDevice === null)
+					ethernetDevice = activeDevices[activeDevices.length - 1];
 			}
 		}
+
+		const active = wifiDevice !== null ? wifiDevice : (ethernetDevice !== null ? ethernetDevice : (activeDevices.length > 0 ? activeDevices[0] : null));
 
 		if (active === null) {
 			connectionType = "";
@@ -66,7 +74,7 @@ Item {
 
 		for (const row of rows) {
 			const fields = row.split(":");
-			if (fields.length >= 3 && fields[0] === "yes") {
+			if (fields.length >= 3 && (fields[0] === "yes" || fields[0] === "*")) {
 				const parsed = Number.parseInt(fields[1], 10);
 				signalPercent = Number.isNaN(parsed) ? -1 : Math.max(0, Math.min(100, parsed));
 				connectionName = fields.slice(2).join(":");
@@ -107,7 +115,7 @@ Item {
 	Process {
 		id: wifiProcess
 
-		command: ["nmcli", "-t", "-f", "ACTIVE,SIGNAL,SSID", "dev", "wifi"]
+		command: ["nmcli", "-t", "-f", "IN-USE,SIGNAL,SSID", "device", "wifi", "list", "--rescan", "no"]
 		stdout: StdioCollector {
 			id: wifiOutput
 			waitForEnd: true
@@ -168,7 +176,7 @@ Item {
 				Label {
 					anchors.horizontalCenter: parent.horizontalCenter
 					theme: root.theme
-					text: root.displayedPercent + "%"
+					text: root.percentText
 					textColor: root.theme.colors.accent
 					size: root.theme.fontSizes.large
 				}
