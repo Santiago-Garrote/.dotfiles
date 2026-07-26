@@ -1,4 +1,5 @@
 import QtQuick
+import "../components"
 
 Item {
 	id: root
@@ -15,23 +16,61 @@ Item {
 		onTriggered: root.now = new Date()
 	}
 
-	Text {
-		anchors.centerIn: parent
-		text: root.timeText
-		color: root.theme.colors.accent
-		font.family: root.theme.fonts.display
-		font.pixelSize: root.theme.fontSizes.clockDigit
-		font.letterSpacing: 0
-		opacity: 0.22
-	}
+	Column {
+		anchors {
+			centerIn: parent
+			margins: root.theme.spacing.medium
+		}
+		spacing: root.theme.spacing.small
 
-	Text {
-		anchors.centerIn: parent
-		text: root.timeText
-		color: root.theme.colors.accent
-		font.family: root.theme.fonts.display
-		font.pixelSize: root.theme.fontSizes.clockDigit
-		font.letterSpacing: 0
-		opacity: 0.96
+		Label {
+			anchors.horizontalCenter: parent.horizontalCenter
+			theme: root.theme
+			text: "SYSTEM TIME"
+			textColor: root.theme.colors.accent
+			size: root.theme.fontSizes.medium
+		}
+
+		Rectangle {
+			anchors.horizontalCenter: parent.horizontalCenter
+			width: 320
+			height: root.theme.borderWidth
+			color: root.theme.colors.accent
+			opacity: 0.62
+		}
+
+		Item {
+			anchors.horizontalCenter: parent.horizontalCenter
+			width: 390
+			height: 58
+
+			Text {
+				anchors.centerIn: parent
+				text: root.timeText
+				color: root.theme.colors.accent
+				font.family: root.theme.fonts.display
+				font.pixelSize: root.theme.fontSizes.clockDigit
+				font.letterSpacing: 0
+				opacity: 0.22
+			}
+
+			Text {
+				anchors.centerIn: parent
+				text: root.timeText
+				color: root.theme.colors.accent
+				font.family: root.theme.fonts.display
+				font.pixelSize: root.theme.fontSizes.clockDigit
+				font.letterSpacing: 0
+				opacity: 0.96
+			}
+		}
+
+		Label {
+			anchors.horizontalCenter: parent.horizontalCenter
+			theme: root.theme
+			text: "MODE: 24H"
+			textColor: root.theme.colors.accent
+			size: root.theme.fontSizes.small
+		}
 	}
 }
