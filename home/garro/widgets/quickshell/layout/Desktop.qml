@@ -30,8 +30,8 @@ Scope {
 		theme: root.theme
 		shown: root.widgetsVisible
 		placement: "top-left"
-		windowWidth: 300
-		windowHeight: 68
+		windowWidth: 180
+		windowHeight: 92
 		margin: root.theme.spacing.gapOuter
 
 		WorkspaceWidget {

@@ -2,27 +2,53 @@ import QtQuick
 import Quickshell.Hyprland._Ipc
 import "../components"
 
-Panel {
+Item {
 	id: root
+
+	required property QtObject theme
 
 	readonly property var workspace: Hyprland.focusedWorkspace
 	readonly property string workspaceLabel: workspace !== null ? workspace.id.toString() : "--"
 
-	Rectangle {
+	Column {
 		anchors.centerIn: parent
-		width: 84
-		height: 28
-		radius: theme.cornerRadius
-		border.width: theme.borderWidth
-		border.color: theme.colors.accent
-		color: theme.colors.background
+		spacing: root.theme.spacing.small
 
-		Label {
-			anchors.centerIn: parent
+		ReadoutTitle {
 			theme: root.theme
-			text: "WS " + root.workspaceLabel
-			textColor: theme.colors.accent
-			size: theme.fontSizes.small
+			title: "WORKSPACE"
+			titleSize: root.theme.fontSizes.small
+		}
+
+		ReadoutDivider {
+			theme: root.theme
+			dividerWidth: 120
+		}
+
+		Item {
+			anchors.horizontalCenter: parent.horizontalCenter
+			width: 96
+			height: 42
+
+			Text {
+				anchors.centerIn: parent
+				text: root.workspaceLabel
+				color: root.theme.colors.accent
+				font.family: root.theme.fonts.display
+				font.pixelSize: 42
+				font.letterSpacing: 0
+				opacity: 0.24
+			}
+
+			Text {
+				anchors.centerIn: parent
+				text: root.workspaceLabel
+				color: root.theme.colors.accent
+				font.family: root.theme.fonts.display
+				font.pixelSize: 42
+				font.letterSpacing: 0
+				opacity: 0.96
+			}
 		}
 	}
 }
