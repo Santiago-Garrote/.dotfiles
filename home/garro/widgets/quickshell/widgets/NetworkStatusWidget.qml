@@ -135,12 +135,9 @@ Item {
 		}
 		spacing: root.theme.spacing.small
 
-		Label {
-			anchors.horizontalCenter: parent.horizontalCenter
+		ReadoutTitle {
 			theme: root.theme
-			text: "NETWORK STATUS"
-			textColor: root.theme.colors.accent
-			size: root.theme.fontSizes.large
+			title: "NETWORK STATUS"
 		}
 
 		Row {
@@ -148,75 +145,36 @@ Item {
 			height: 46
 			spacing: root.theme.spacing.medium
 
-			Row {
-				anchors.verticalCenter: parent.verticalCenter
-				spacing: 3
-
-				Repeater {
-					model: 10
-
-					Rectangle {
-						required property int index
-
-						width: 21
-						height: 34
-						color: index < root.filledSegments ? root.theme.colors.accent : "transparent"
-						border.color: root.theme.colors.accent
-						border.width: root.theme.borderWidth
-						opacity: index < root.filledSegments ? 0.88 : 0.52
-						radius: root.theme.cornerRadius
-					}
-				}
+			SegmentBar {
+				theme: root.theme
+				filledSegments: root.filledSegments
 			}
 
-			Column {
-				anchors.verticalCenter: parent.verticalCenter
-				spacing: 0
-
-				Label {
-					anchors.horizontalCenter: parent.horizontalCenter
-					theme: root.theme
-					text: root.percentText
-					textColor: root.theme.colors.accent
-					size: root.theme.fontSizes.large
-				}
-
-				Label {
-					anchors.horizontalCenter: parent.horizontalCenter
-					theme: root.theme
-					text: root.connectionType === "wifi" ? "SIG" : "LINK"
-					textColor: root.theme.colors.accent
-					size: root.theme.fontSizes.small
-				}
+			MetricReadout {
+				theme: root.theme
+				value: root.percentText
+				unit: root.connectionType === "wifi" ? "SIG" : "LINK"
 			}
 		}
 
-		Rectangle {
-			anchors.horizontalCenter: parent.horizontalCenter
-			width: 300
-			height: root.theme.borderWidth
-			color: root.theme.colors.accent
-			opacity: 0.62
+		ReadoutDivider {
+			theme: root.theme
 		}
 
 		Column {
 			anchors.horizontalCenter: parent.horizontalCenter
 			spacing: root.theme.spacing.small
 
-			Label {
-				anchors.horizontalCenter: parent.horizontalCenter
+			StatusLine {
 				theme: root.theme
-				text: "MODE: " + root.networkMode
-				textColor: root.theme.colors.accent
-				size: root.theme.fontSizes.medium
+				name: "MODE"
+				value: root.networkMode
 			}
 
-			Label {
-				anchors.horizontalCenter: parent.horizontalCenter
+			StatusLine {
 				theme: root.theme
-				text: "LINK: " + root.networkName
-				textColor: root.theme.colors.accent
-				size: root.theme.fontSizes.medium
+				name: "LINK"
+				value: root.networkName
 			}
 		}
 	}

@@ -79,12 +79,9 @@ Item {
 		}
 		spacing: root.theme.spacing.small
 
-		Label {
+		ReadoutTitle {
 			theme: root.theme
-			text: "BATTERY STATUS"
-			textColor: root.theme.colors.accent
-			size: root.theme.fontSizes.large
-			anchors.horizontalCenter: parent.horizontalCenter
+			title: "BATTERY STATUS"
 		}
 
 		Row {
@@ -121,75 +118,36 @@ Item {
 				}
 			}
 
-			Row {
-				anchors.verticalCenter: parent.verticalCenter
-				spacing: 3
-
-				Repeater {
-					model: 10
-
-					Rectangle {
-						required property int index
-
-						width: 21
-						height: 34
-						color: index < root.filledSegments ? root.theme.colors.accent : "transparent"
-						border.color: root.theme.colors.accent
-						border.width: root.theme.borderWidth
-						opacity: index < root.filledSegments ? 0.88 : 0.52
-						radius: root.theme.cornerRadius
-					}
-				}
+			SegmentBar {
+				theme: root.theme
+				filledSegments: root.filledSegments
 			}
 
-			Column {
-				anchors.verticalCenter: parent.verticalCenter
-				spacing: 0
-
-				Label {
-					theme: root.theme
-					text: root.batteryPercent >= 0 ? root.batteryPercent + "%" : "--%"
-					textColor: root.theme.colors.accent
-					size: root.theme.fontSizes.large
-					anchors.horizontalCenter: parent.horizontalCenter
-				}
-
-				Label {
-					theme: root.theme
-					text: "CAP"
-					textColor: root.theme.colors.accent
-					size: root.theme.fontSizes.small
-					anchors.horizontalCenter: parent.horizontalCenter
-				}
+			MetricReadout {
+				theme: root.theme
+				value: root.batteryPercent >= 0 ? root.batteryPercent + "%" : "--%"
+				unit: "CAP"
 			}
 		}
 
-		Rectangle {
-			width: 300
-			height: root.theme.borderWidth
-			color: root.theme.colors.accent
-			opacity: 0.62
-			anchors.horizontalCenter: parent.horizontalCenter
+		ReadoutDivider {
+			theme: root.theme
 		}
 
 		Column {
 			anchors.horizontalCenter: parent.horizontalCenter
 			spacing: root.theme.spacing.small
 
-			Label {
+			StatusLine {
 				theme: root.theme
-				text: "MODE: " + root.batteryMode
-				textColor: root.theme.colors.accent
-				size: root.theme.fontSizes.medium
-				anchors.horizontalCenter: parent.horizontalCenter
+				name: "MODE"
+				value: root.batteryMode
 			}
 
-			Label {
+			StatusLine {
 				theme: root.theme
-				text: "EST TIME: --"
-				textColor: root.theme.colors.accent
-				size: root.theme.fontSizes.medium
-				anchors.horizontalCenter: parent.horizontalCenter
+				name: "EST TIME"
+				value: "--"
 			}
 		}
 	}

@@ -23,20 +23,15 @@ Item {
 		}
 		spacing: root.theme.spacing.small
 
-		Label {
-			anchors.horizontalCenter: parent.horizontalCenter
+		ReadoutTitle {
 			theme: root.theme
-			text: "SYSTEM TIME"
-			textColor: root.theme.colors.accent
-			size: root.theme.fontSizes.medium
+			title: "SYSTEM TIME"
+			titleSize: root.theme.fontSizes.medium
 		}
 
-		Rectangle {
-			anchors.horizontalCenter: parent.horizontalCenter
-			width: 320
-			height: root.theme.borderWidth
-			color: root.theme.colors.accent
-			opacity: 0.62
+		ReadoutDivider {
+			theme: root.theme
+			dividerWidth: 320
 		}
 
 		Item {
@@ -65,11 +60,10 @@ Item {
 			}
 		}
 
-		Label {
-			anchors.horizontalCenter: parent.horizontalCenter
+		StatusLine {
 			theme: root.theme
-			text: "MODE: 24H"
-			textColor: root.theme.colors.accent
+			name: "MODE"
+			value: "24H"
 			size: root.theme.fontSizes.small
 		}
 	}
