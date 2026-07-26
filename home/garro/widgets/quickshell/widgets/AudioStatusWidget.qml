@@ -37,24 +37,6 @@ Item {
 			height: 46
 			spacing: root.theme.spacing.medium
 
-			Rectangle {
-				width: 24
-				height: 38
-				anchors.verticalCenter: parent.verticalCenter
-				color: "transparent"
-				border.color: root.theme.colors.accent
-				border.width: root.theme.borderWidth
-				radius: root.theme.cornerRadius
-
-				Label {
-					anchors.centerIn: parent
-					theme: root.theme
-					text: ">"
-					textColor: root.theme.colors.accent
-					size: root.theme.fontSizes.medium
-				}
-			}
-
 			Row {
 				anchors.verticalCenter: parent.verticalCenter
 				spacing: 3
