@@ -10,6 +10,8 @@ PanelWindow {
 
 	property string placement: "top-right"
 	property int margin: 0
+	property int offsetX: 0
+	property int offsetY: 0
 	property int windowWidth: 280
 	property int windowHeight: 92
 	property bool shown: true
@@ -33,10 +35,10 @@ PanelWindow {
 	}
 
 	margins {
-		left: margin
-		right: margin
-		top: margin
-		bottom: margin
+		left: margin + (placement.indexOf("left") !== -1 ? offsetX : 0)
+		right: margin + (placement.indexOf("right") !== -1 ? offsetX : 0)
+		top: margin + (placement.indexOf("top") !== -1 ? offsetY : 0)
+		bottom: margin + (placement.indexOf("bottom") !== -1 ? offsetY : 0)
 	}
 
 	Item {
