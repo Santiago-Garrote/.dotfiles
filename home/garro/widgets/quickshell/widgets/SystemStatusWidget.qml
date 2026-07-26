@@ -8,10 +8,19 @@ Item {
 	required property QtObject theme
 
 	property string batteryName: "BAT0"
-	readonly property int batteryPercent: parsePercent(capacityFile.text())
-	readonly property string batteryStatus: statusFile.text().trim()
+	property int batteryPercent: -1
+	property string batteryStatus: ""
+
 	readonly property string batteryMode: formatMode(batteryStatus)
 	readonly property int filledSegments: batteryPercent >= 0 ? Math.ceil(batteryPercent / 10) : 0
+
+	function updateCapacity(): void {
+		batteryPercent = parsePercent(capacityFile.text());
+	}
+
+	function updateStatus(): void {
+		batteryStatus = statusFile.text().trim();
+	}
 
 	function parsePercent(value: string): int {
 		const parsed = Number.parseInt(value.trim(), 10);
@@ -31,9 +40,10 @@ Item {
 	}
 
 	Timer {
-		interval: 30000
+		interval: 10000
 		running: true
 		repeat: true
+		triggeredOnStart: true
 		onTriggered: {
 			capacityFile.reload();
 			statusFile.reload();
@@ -47,6 +57,8 @@ Item {
 		preload: true
 		blockLoading: true
 		printErrors: false
+		onLoaded: root.updateCapacity()
+		onTextChanged: root.updateCapacity()
 	}
 
 	FileView {
@@ -56,6 +68,8 @@ Item {
 		preload: true
 		blockLoading: true
 		printErrors: false
+		onLoaded: root.updateStatus()
+		onTextChanged: root.updateStatus()
 	}
 
 	Column {
