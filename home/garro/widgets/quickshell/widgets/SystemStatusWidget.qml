@@ -2,14 +2,15 @@ import QtQuick
 import Quickshell.Io
 import "../components"
 
-Panel {
+Item {
 	id: root
+
+	required property QtObject theme
 
 	property string batteryName: "BAT0"
 	readonly property int batteryPercent: parsePercent(capacityFile.text())
 	readonly property string batteryStatus: statusFile.text().trim()
 	readonly property string batteryMode: formatMode(batteryStatus)
-	readonly property color batteryColor: batteryPercent >= 0 && batteryPercent <= 15 && batteryStatus !== "Charging" ? theme.colors.muted : theme.colors.accent
 	readonly property int filledSegments: batteryPercent >= 0 ? Math.ceil(batteryPercent / 10) : 0
 
 	function parsePercent(value: string): int {
@@ -58,7 +59,10 @@ Panel {
 	}
 
 	Column {
-		anchors.fill: parent
+		anchors {
+			fill: parent
+			margins: root.theme.spacing.medium
+		}
 		spacing: root.theme.spacing.small
 
 		Label {
@@ -66,10 +70,11 @@ Panel {
 			text: "BATTERY STATUS"
 			textColor: root.theme.colors.accent
 			size: root.theme.fontSizes.large
+			anchors.horizontalCenter: parent.horizontalCenter
 		}
 
 		Row {
-			width: parent.width
+			anchors.horizontalCenter: parent.horizontalCenter
 			height: 46
 			spacing: root.theme.spacing.medium
 
@@ -78,7 +83,7 @@ Panel {
 				height: 38
 				anchors.verticalCenter: parent.verticalCenter
 				color: "transparent"
-				border.color: root.theme.colors.border
+				border.color: root.theme.colors.accent
 				border.width: root.theme.borderWidth
 				radius: root.theme.cornerRadius
 
@@ -90,14 +95,14 @@ Panel {
 						top: parent.top
 						topMargin: -3
 					}
-					color: root.theme.colors.border
+					color: root.theme.colors.accent
 				}
 
 				Label {
 					anchors.centerIn: parent
 					theme: root.theme
 					text: "+"
-					textColor: root.theme.colors.muted
+					textColor: root.theme.colors.accent
 					size: root.theme.fontSizes.medium
 				}
 			}
@@ -114,8 +119,8 @@ Panel {
 
 						width: 21
 						height: 34
-						color: index < root.filledSegments ? root.batteryColor : "transparent"
-						border.color: index < root.filledSegments ? root.batteryColor : root.theme.colors.border
+						color: index < root.filledSegments ? root.theme.colors.accent : "transparent"
+						border.color: root.theme.colors.accent
 						border.width: root.theme.borderWidth
 						opacity: index < root.filledSegments ? 0.88 : 0.52
 						radius: root.theme.cornerRadius
@@ -130,41 +135,47 @@ Panel {
 				Label {
 					theme: root.theme
 					text: root.batteryPercent >= 0 ? root.batteryPercent + "%" : "--%"
-					textColor: root.batteryColor
+					textColor: root.theme.colors.accent
 					size: root.theme.fontSizes.large
+					anchors.horizontalCenter: parent.horizontalCenter
 				}
 
 				Label {
 					theme: root.theme
 					text: "CAP"
-					textColor: root.theme.colors.muted
+					textColor: root.theme.colors.accent
 					size: root.theme.fontSizes.small
+					anchors.horizontalCenter: parent.horizontalCenter
 				}
 			}
 		}
 
 		Rectangle {
-			width: parent.width
+			width: 300
 			height: root.theme.borderWidth
-			color: root.theme.colors.border
+			color: root.theme.colors.accent
+			opacity: 0.62
+			anchors.horizontalCenter: parent.horizontalCenter
 		}
 
 		Column {
-			width: parent.width
+			anchors.horizontalCenter: parent.horizontalCenter
 			spacing: root.theme.spacing.small
 
 			Label {
 				theme: root.theme
 				text: "MODE: " + root.batteryMode
-				textColor: root.theme.colors.foreground
+				textColor: root.theme.colors.accent
 				size: root.theme.fontSizes.medium
+				anchors.horizontalCenter: parent.horizontalCenter
 			}
 
 			Label {
 				theme: root.theme
 				text: "EST TIME: --"
-				textColor: root.theme.colors.muted
+				textColor: root.theme.colors.accent
 				size: root.theme.fontSizes.medium
+				anchors.horizontalCenter: parent.horizontalCenter
 			}
 		}
 	}
