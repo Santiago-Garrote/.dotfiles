@@ -44,8 +44,8 @@ Scope {
 		theme: root.theme
 		shown: root.widgetsVisible
 		placement: "bottom-right"
-		windowWidth: 240
-		windowHeight: 78
+		windowWidth: 360
+		windowHeight: 148
 		margin: root.theme.spacing.gapOuter
 
 		SystemStatusWidget {
