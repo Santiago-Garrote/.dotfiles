@@ -47,9 +47,24 @@ Scope {
 		windowWidth: 360
 		windowHeight: 148
 		margin: root.theme.spacing.gapOuter
-		offsetY: 492
+		offsetY: 656
 
 		SystemStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-right"
+		windowWidth: 360
+		windowHeight: 148
+		margin: root.theme.spacing.gapOuter
+		offsetY: 492
+
+		BatteryHealthWidget {
 			anchors.fill: parent
 			theme: root.theme
 		}
