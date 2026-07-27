@@ -47,8 +47,53 @@ Scope {
 		windowWidth: 360
 		windowHeight: 148
 		margin: root.theme.spacing.gapOuter
+		offsetY: 492
 
 		SystemStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-right"
+		windowWidth: 360
+		windowHeight: 148
+		margin: root.theme.spacing.gapOuter
+		offsetY: 328
+
+		CpuStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-right"
+		windowWidth: 360
+		windowHeight: 148
+		margin: root.theme.spacing.gapOuter
+		offsetY: 164
+
+		MemoryStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-right"
+		windowWidth: 360
+		windowHeight: 148
+		margin: root.theme.spacing.gapOuter
+
+		StorageStatusWidget {
 			anchors.fill: parent
 			theme: root.theme
 		}
