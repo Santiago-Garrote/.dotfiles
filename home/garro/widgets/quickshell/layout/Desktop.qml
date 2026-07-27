@@ -121,9 +121,24 @@ Scope {
 		windowWidth: 360
 		windowHeight: 148
 		margin: root.theme.spacing.gapOuter
-		offsetY: 164
+		offsetY: 328
 
 		AudioStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-left"
+		windowWidth: 360
+		windowHeight: 148
+		margin: root.theme.spacing.gapOuter
+		offsetY: 164
+
+		NetworkTrafficWidget {
 			anchors.fill: parent
 			theme: root.theme
 		}
