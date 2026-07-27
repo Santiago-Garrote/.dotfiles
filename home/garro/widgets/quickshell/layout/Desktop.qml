@@ -11,12 +11,16 @@ Scope {
 	readonly property bool widgetsVisible: workspace !== null
 		&& workspace.toplevels !== null
 		&& workspace.toplevels.values.length === 0
+	readonly property int widgetWidth: 330
+	readonly property int widgetHeight: 148
+	readonly property int columnGap: 336
+	readonly property int rowGap: 164
 
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
 		placement: "top-right"
-		windowWidth: 460
+		windowWidth: root.widgetWidth
 		windowHeight: 128
 		margin: root.theme.spacing.gapOuter
 
@@ -43,41 +47,11 @@ Scope {
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
-		placement: "bottom-right"
-		windowWidth: 360
-		windowHeight: 148
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
 		margin: root.theme.spacing.gapOuter
-		offsetY: 656
-
-		SystemStatusWidget {
-			anchors.fill: parent
-			theme: root.theme
-		}
-	}
-
-	WidgetWindow {
-		theme: root.theme
-		shown: root.widgetsVisible
-		placement: "bottom-right"
-		windowWidth: 360
-		windowHeight: 148
-		margin: root.theme.spacing.gapOuter
-		offsetY: 492
-
-		BatteryHealthWidget {
-			anchors.fill: parent
-			theme: root.theme
-		}
-	}
-
-	WidgetWindow {
-		theme: root.theme
-		shown: root.widgetsVisible
-		placement: "bottom-right"
-		windowWidth: 360
-		windowHeight: 148
-		margin: root.theme.spacing.gapOuter
-		offsetY: 328
+		offsetY: root.rowGap
 
 		CpuStatusWidget {
 			anchors.fill: parent
@@ -88,11 +62,58 @@ Scope {
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
-		placement: "bottom-right"
-		windowWidth: 360
-		windowHeight: 148
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
 		margin: root.theme.spacing.gapOuter
-		offsetY: 164
+		offsetX: root.columnGap
+		offsetY: root.rowGap
+
+		CpuFrequencyWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap
+
+		CpuThermalWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetY: root.rowGap
+
+		ThermalStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetY: root.rowGap * 2
 
 		MemoryStatusWidget {
 			anchors.fill: parent
@@ -103,10 +124,28 @@ Scope {
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
-		placement: "bottom-right"
-		windowWidth: 360
-		windowHeight: 148
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
 		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 2
+
+		SwapStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 2
 
 		StorageStatusWidget {
 			anchors.fill: parent
@@ -117,13 +156,13 @@ Scope {
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
-		placement: "bottom-left"
-		windowWidth: 360
-		windowHeight: 148
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
 		margin: root.theme.spacing.gapOuter
-		offsetY: 328
+		offsetY: root.rowGap * 2
 
-		AudioStatusWidget {
+		HomeStorageWidget {
 			anchors.fill: parent
 			theme: root.theme
 		}
@@ -132,11 +171,89 @@ Scope {
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
-		placement: "bottom-left"
-		windowWidth: 360
-		windowHeight: 148
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
 		margin: root.theme.spacing.gapOuter
-		offsetY: 164
+		offsetY: root.rowGap * 3
+
+		PersistStorageWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 3
+
+		DiskIoWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 3
+
+		SystemStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetY: root.rowGap * 3
+
+		BatteryHealthWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetY: root.rowGap * 4
+
+		NetworkStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 4
 
 		NetworkTrafficWidget {
 			anchors.fill: parent
@@ -147,12 +264,184 @@ Scope {
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
-		placement: "bottom-left"
-		windowWidth: 360
-		windowHeight: 148
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
 		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 4
 
-		NetworkStatusWidget {
+		NetworkAddressWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetY: root.rowGap * 4
+
+		AudioStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetY: root.rowGap * 5
+
+		AudioInputWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 5
+
+		AudioDeviceWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 5
+
+		GpuStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetY: root.rowGap * 5
+
+		GpuThermalWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetY: root.rowGap * 6
+
+		FanStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 6
+
+		DisplayStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 6
+
+		WindowStateWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-right"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetY: root.rowGap * 6
+
+		MousePositionWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetY: root.rowGap * 7
+
+		PointerCoordinatesWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "top-left"
+		windowWidth: root.widgetWidth
+		windowHeight: root.widgetHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnGap
+		offsetY: root.rowGap * 7
+
+		PointerGridWidget {
 			anchors.fill: parent
 			theme: root.theme
 		}
