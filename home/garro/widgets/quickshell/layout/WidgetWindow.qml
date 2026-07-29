@@ -15,10 +15,12 @@ PanelWindow {
 	property int windowWidth: 280
 	property int windowHeight: 92
 	property bool shown: true
+	property var inputMask: null
 
 	implicitWidth: windowWidth
 	implicitHeight: windowHeight
 	color: "transparent"
+	mask: inputMask
 	exclusionMode: ExclusionMode.Ignore
 	focusable: false
 	aboveWindows: false

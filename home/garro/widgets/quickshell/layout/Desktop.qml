@@ -1,6 +1,7 @@
 import Quickshell
 import Quickshell.Hyprland._Ipc
 import QtQuick
+import "../systemSchematic"
 import "../widgets"
 
 Scope {
@@ -15,6 +16,33 @@ Scope {
 	readonly property int widgetHeight: 148
 	readonly property int columnGap: 336
 	readonly property int rowGap: 164
+
+	WidgetWindow {
+		id: schematicWindow
+
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-left"
+		windowWidth: 1100
+		windowHeight: 728
+		margin: root.theme.spacing.gapOuter
+		inputMask: Region {
+			Region {
+				item: systemSchematic.ssdHitArea
+			}
+
+			Region {
+				item: systemSchematic.calloutHitArea
+			}
+		}
+
+		SystemSchematicWidget {
+			id: systemSchematic
+
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
 
 	WidgetWindow {
 		theme: root.theme
