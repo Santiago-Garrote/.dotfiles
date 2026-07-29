@@ -15,19 +15,25 @@ The source SVGs live in `assets/system_widget`:
   reference.
 
 The runtime does not replace the full screen with the exploded mockup. It uses
-the mockup only to derive the final SSD bounding box stored in the manifest.
+the mockup to export the selected-state SSD, socket, activity indicator, and
+technical label layers, then composes them over the assembled base in QML.
 
 The STORAGE slice relies on stable semantic XML IDs:
 
 - `storage-ssd`
 - `storage-socket`
 - `storage-activity-led`
+- `storage-ssd-label`
+- `storage-socket-label`
+- `storage-activity-label`
 - `pcb-base`
 - `chassis-base`
 
 The original Inkscape labels were already semantic for the active storage
 objects. The XML IDs were normalized from generated IDs. The existing
 `CHASIS_BASE` label typo was left unchanged, but its XML ID is `chassis-base`.
+The STORAGE mockup label groups were also normalized to semantic XML IDs so the
+export script can regenerate the selected-state callouts deterministically.
 
 ## Asset Export
 
@@ -38,8 +44,9 @@ assets/system_widget/scripts/export-assets.sh
 ```
 
 The script requires the Inkscape CLI. It checks source files, checks semantic
-IDs, exports cropped SVG layers for the SSD, socket, and activity indicator, and
-generates `assets/system_widget/manifest.json`.
+IDs, exports cropped SVG layers for the assembled and selected STORAGE parts,
+exports the selected-state technical labels from the mockup, and generates
+`assets/system_widget/manifest.json`.
 
 Runtime assets:
 
@@ -47,12 +54,33 @@ Runtime assets:
 - `assets/system_widget/runtime/storage/ssd.svg`
 - `assets/system_widget/runtime/storage/socket.svg`
 - `assets/system_widget/runtime/storage/activity-led.svg`
+- `assets/system_widget/runtime/storage/exploded-ssd.svg`
+- `assets/system_widget/runtime/storage/exploded-socket.svg`
+- `assets/system_widget/runtime/storage/exploded-activity-led.svg`
+- `assets/system_widget/runtime/storage/ssd-label.svg`
+- `assets/system_widget/runtime/storage/socket-label.svg`
+- `assets/system_widget/runtime/storage/activity-label.svg`
 - `assets/system_widget/manifest.json`
 
 The current renderer uses cropped assets plus explicit offsets from the
 manifest. This is lighter than full-canvas transparent layers, but it requires
 the manifest to stay in sync with exported geometry. The export script owns that
 synchronization.
+
+The generated development assets are post-processed with the Industrial Amber
+semantic colors. During the real Home Manager deployment, `files.nix` applies
+the active Nix theme tokens to the copied SVG assets:
+
+- base fill: `surface`
+- base strokes: `border`
+- SSD stroke: `accent`
+- socket stroke: `foreground`
+- activity indicator stroke: `accent`
+- selected-state labels and connectors: `accent`
+- selected-state socket stroke: `foreground`
+
+This keeps the source SVG as geometry and lets the deployed runtime assets
+follow the current declarative theme.
 
 ## Quickshell Integration
 
@@ -112,10 +140,13 @@ In `ASSEMBLED`, the complete schematic is visible, the SSD has a subtle amber
 hover frame, and only the SSD input region accepts pointer events.
 
 In `STORAGE_SELECTED`, the SSD animates from its assembled bounding box to the
-SSD bounding box derived from `mockups/storage-exploded.svg`. The socket and
-storage activity indicator remain sharp at their assembled locations, unrelated
-hardware is dimmed with opacity, and the storage information overlay appears.
-Clicking the SSD again returns to `ASSEMBLED` without restarting Quickshell.
+SSD bounding box derived from `mockups/storage-exploded.svg`. The socket,
+storage activity indicator, and technical labels are rendered from
+mockup-derived layers so the selected composition matches the approved
+reference.
+Unrelated hardware is dimmed with opacity, and the storage information overlay
+appears in the lower-right area without replacing the mockup callouts. Clicking
+the SSD again returns to `ASSEMBLED` without restarting Quickshell.
 
 Click-outside dismissal is intentionally not implemented in this slice because
 it would require a broader input region and would conflict with desktop

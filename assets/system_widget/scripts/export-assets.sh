@@ -19,6 +19,15 @@ required_ids=(
   "chassis-base"
 )
 
+exploded_required_ids=(
+  "storage-ssd"
+  "storage-socket"
+  "storage-activity-led"
+  "storage-ssd-label"
+  "storage-socket-label"
+  "storage-activity-label"
+)
+
 fail() {
   printf 'error: %s\n' "$*" >&2
   exit 1
@@ -102,6 +111,32 @@ normalize_svg_metadata() {
   SVG_DOCNAME="$docname" perl -0pi -e 's/sodipodi:docname="[^"]*"/"sodipodi:docname=\"" . $ENV{"SVG_DOCNAME"} . "\""/ge' "$svg"
 }
 
+theme_svg_assets() {
+  local root="$1"
+  local surface="${2:-202326}"
+  local border="${3:-3a3d3f}"
+  local foreground="${4:-c9c3b6}"
+  local accent="${5:-d08a2c}"
+
+  SVG_SURFACE="$surface" SVG_BORDER="$border" perl -0pi -e '
+    s/fill:#b4b4b4/fill:#$ENV{"SVG_SURFACE"}/g;
+    s/stroke:#000000/stroke:#$ENV{"SVG_BORDER"}/g;
+  ' "$root/base.svg"
+
+  SVG_ACCENT="$accent" perl -0pi -e 's/stroke:#000000/stroke:#$ENV{"SVG_ACCENT"}/g' \
+    "$root/storage/ssd.svg" \
+    "$root/storage/exploded-ssd.svg" \
+    "$root/storage/activity-led.svg" \
+    "$root/storage/exploded-activity-led.svg" \
+    "$root/storage/ssd-label.svg" \
+    "$root/storage/socket-label.svg" \
+    "$root/storage/activity-label.svg"
+
+  SVG_FOREGROUND="$foreground" perl -0pi -e 's/stroke:#000000/stroke:#$ENV{"SVG_FOREGROUND"}/g' \
+    "$root/storage/socket.svg" \
+    "$root/storage/exploded-socket.svg"
+}
+
 require_file "$source_svg"
 require_file "$exploded_svg"
 
@@ -109,7 +144,9 @@ for id in "${required_ids[@]}"; do
   require_id "$source_svg" "$id"
 done
 
-require_id "$exploded_svg" "storage-ssd"
+for id in "${exploded_required_ids[@]}"; do
+  require_id "$exploded_svg" "$id"
+done
 
 rm -rf "$runtime_dir"
 mkdir -p "$storage_dir"
@@ -125,6 +162,13 @@ rm -f "$base_tmp"
 export_id "$source_svg" "storage-ssd" "$storage_dir/ssd.svg"
 export_id "$source_svg" "storage-socket" "$storage_dir/socket.svg"
 export_id "$source_svg" "storage-activity-led" "$storage_dir/activity-led.svg"
+export_id "$exploded_svg" "storage-ssd" "$storage_dir/exploded-ssd.svg"
+export_id "$exploded_svg" "storage-socket" "$storage_dir/exploded-socket.svg"
+export_id "$exploded_svg" "storage-activity-led" "$storage_dir/exploded-activity-led.svg"
+export_id "$exploded_svg" "storage-ssd-label" "$storage_dir/ssd-label.svg"
+export_id "$exploded_svg" "storage-socket-label" "$storage_dir/socket-label.svg"
+export_id "$exploded_svg" "storage-activity-label" "$storage_dir/activity-label.svg"
+theme_svg_assets "$runtime_dir"
 
 cat >"$manifest" <<EOF
 {
@@ -143,7 +187,13 @@ cat >"$manifest" <<EOF
     "base": "runtime/base.svg",
     "ssd": "runtime/storage/ssd.svg",
     "socket": "runtime/storage/socket.svg",
-    "activityLed": "runtime/storage/activity-led.svg"
+    "activityLed": "runtime/storage/activity-led.svg",
+    "explodedSsd": "runtime/storage/exploded-ssd.svg",
+    "explodedSocket": "runtime/storage/exploded-socket.svg",
+    "explodedActivityLed": "runtime/storage/exploded-activity-led.svg",
+    "ssdLabel": "runtime/storage/ssd-label.svg",
+    "socketLabel": "runtime/storage/socket-label.svg",
+    "activityLabel": "runtime/storage/activity-label.svg"
   },
   "storage": {
     "primaryAsset": "ssd",
@@ -155,6 +205,13 @@ cat >"$manifest" <<EOF
     },
     "exploded": {
       "ssd": $(json_bbox "$exploded_svg" "storage-ssd"),
+      "socket": $(json_bbox "$exploded_svg" "storage-socket"),
+      "activityLed": $(json_bbox "$exploded_svg" "storage-activity-led"),
+      "labels": {
+        "ssd": $(json_bbox "$exploded_svg" "storage-ssd-label"),
+        "socket": $(json_bbox "$exploded_svg" "storage-socket-label"),
+        "activityLed": $(json_bbox "$exploded_svg" "storage-activity-label")
+      },
       "rotation": 0,
       "scale": 1
     },
@@ -176,7 +233,18 @@ cat >"$manifest" <<EOF
 }
 EOF
 
-for output in "$runtime_dir/base.svg" "$storage_dir/ssd.svg" "$storage_dir/socket.svg" "$storage_dir/activity-led.svg" "$manifest"; do
+for output in \
+  "$runtime_dir/base.svg" \
+  "$storage_dir/ssd.svg" \
+  "$storage_dir/socket.svg" \
+  "$storage_dir/activity-led.svg" \
+  "$storage_dir/exploded-ssd.svg" \
+  "$storage_dir/exploded-socket.svg" \
+  "$storage_dir/exploded-activity-led.svg" \
+  "$storage_dir/ssd-label.svg" \
+  "$storage_dir/socket-label.svg" \
+  "$storage_dir/activity-label.svg" \
+  "$manifest"; do
   [[ -s "$output" ]] || fail "expected generated file is empty or missing: $output"
 done
 

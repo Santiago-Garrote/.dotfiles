@@ -75,31 +75,5 @@ Panel {
 				}
 			}
 		}
-
-		ReadoutDivider {
-			theme: root.theme
-		}
-
-		Column {
-			spacing: root.theme.spacing.small
-
-			StatusLine {
-				theme: root.theme
-				name: "SOLID STATE DRIVE"
-				value: root.provider.devicePath
-			}
-
-			StatusLine {
-				theme: root.theme
-				name: "SOLID STATE DRIVE SOCKET"
-				value: root.provider.rootMountPoint
-			}
-
-			StatusLine {
-				theme: root.theme
-				name: "STATUS INDICATOR"
-				value: root.provider.storageActive ? "ACTIVE" : "IDLE"
-			}
-		}
 	}
 }

@@ -488,7 +488,7 @@
            x="196.26057"
            y="221.32396"
            inkscape:label="SOCKET_SSD" /><g
-           id="g36"
+           id="storage-socket-label"
            inkscape:label="LABEL"
            transform="matrix(0.54991277,0,0,0.54991278,79.01998,101.02392)"><path
              style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.223401;stroke-linecap:square;stroke-dasharray:none"
@@ -525,7 +525,7 @@
            x="253.82401"
            y="228.53534"
            inkscape:label="STORAGE_ACTIVITY_LED" /><g
-           id="g38"
+           id="storage-activity-label"
            inkscape:label="LABEL"
            transform="translate(36.114079,-2.1172731)"><path
              style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.0783547;stroke-linecap:square;stroke-dasharray:none"
@@ -565,7 +565,7 @@
            sodipodi:nodetypes="cccccccccccccccscc"
            inkscape:label="SSD"
            transform="matrix(-3.2611682,0,0,1.8766667,1237.277,-255.8436)" /><g
-           id="g37"
+           id="storage-ssd-label"
            inkscape:label="LABEL"
            transform="matrix(0.54991277,0,0,0.54991278,-88.008015,-47.458559)"><path
              style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.223401;stroke-linecap:square;stroke-dasharray:none"

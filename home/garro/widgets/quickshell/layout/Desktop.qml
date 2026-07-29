@@ -23,8 +23,8 @@ Scope {
 		theme: root.theme
 		shown: root.widgetsVisible
 		placement: "bottom-left"
-		windowWidth: 1100
-		windowHeight: 728
+		windowWidth: 860
+		windowHeight: 570
 		margin: root.theme.spacing.gapOuter
 		inputMask: Region {
 			Region {

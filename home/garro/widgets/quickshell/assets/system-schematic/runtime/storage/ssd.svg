@@ -62,7 +62,7 @@
        inkscape:label="STORAGE"
        style="fill:none;fill-opacity:1"><path
          id="storage-ssd"
-         style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.105218;stroke-linecap:square;stroke-dasharray:none"
+         style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#d08a2c;stroke-width:0.105218;stroke-linecap:square;stroke-dasharray:none"
          d="m 400.29496,175.12542 h -21.42874 l -0.21287,0.6065 -0.8396,0.0251 v 4.82022 3.1026 l 0.84707,-0.02 v 0.23855 0.20163 l -0.86694,0.0109 -0.003,1.34733 0.87542,0.0209 0.19992,0.46595 21.42822,0.0249 v -4.49478 c 0,0 -0.56138,-0.33138 -0.56138,-0.89793 0,-0.56847 0.56138,-0.98026 0.56138,-0.98026 z"
          sodipodi:nodetypes="cccccccccccccccscc"
          inkscape:label="SSD"
