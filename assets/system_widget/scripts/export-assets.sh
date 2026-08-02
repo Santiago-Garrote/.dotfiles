@@ -8,8 +8,6 @@ exploded_svg="$asset_root/mockups/storage-exploded.svg"
 runtime_dir="$asset_root/runtime"
 storage_dir="$runtime_dir/storage"
 manifest="$asset_root/manifest.json"
-repo_root="$(cd -- "$asset_root/../.." && pwd)"
-quickshell_asset_dir="$repo_root/home/garro/widgets/quickshell/assets/system-schematic"
 
 required_ids=(
   "storage-ssd"
@@ -248,11 +246,5 @@ for output in \
   [[ -s "$output" ]] || fail "expected generated file is empty or missing: $output"
 done
 
-rm -rf "$quickshell_asset_dir"
-mkdir -p "$quickshell_asset_dir"
-cp -r "$runtime_dir" "$quickshell_asset_dir/runtime"
-cp "$manifest" "$quickshell_asset_dir/manifest.json"
-
 printf 'Generated storage schematic assets in %s\n' "$runtime_dir"
 printf 'Generated manifest at %s\n' "$manifest"
-printf 'Synced Quickshell development assets to %s\n' "$quickshell_asset_dir"

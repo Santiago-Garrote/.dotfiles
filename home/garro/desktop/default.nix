@@ -5,11 +5,10 @@
     ./appearance
     (import ./gtk { inherit theme; })
     ./hyprlauncher
-    (import ./hyprland { inherit theme; })
+    (import ./hyprland { inherit pkgs theme; })
     (import ./hyprtoolkit { inherit theme; })
     (import ./qt { inherit theme; })
     (import ./quickshell { inherit pkgs theme; })
     ./uwsm
-    (import ./waybar { inherit theme; })
   ];
 }
