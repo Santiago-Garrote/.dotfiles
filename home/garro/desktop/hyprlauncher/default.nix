@@ -10,7 +10,7 @@
       };
 
       cache = {
-        enabled = true;
+        enabled = false;
       };
 
       finders = {
