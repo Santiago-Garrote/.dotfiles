@@ -14,6 +14,7 @@
     (import ./kitty { inherit theme; })
     (import ./lutris { inherit pkgs umuPackage; })
     ./neovim
+    ./obs-studio
     ./ssh
     (import ./wlogout { inherit pkgs theme; })
   ];
