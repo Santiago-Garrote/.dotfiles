@@ -13,6 +13,7 @@
     (import ./hyprlock { inherit theme; })
     (import ./kitty { inherit theme; })
     (import ./lutris { inherit pkgs umuPackage; })
+    ./media
     ./neovim
     ./obs-studio
     ./ssh
