@@ -26,25 +26,25 @@ let
       sshCommand = ssh -F ${sshConfig}
   '';
 
+  globalGitConfig = ''
+    [init]
+      defaultBranch = main
+    [user]
+      name = ${personalProfile.name}
+      email = ${personalProfile.email}
+    [includeIf "gitdir:~/dev/personal/"]
+      path = ~/.config/git/profiles/personal.gitconfig
+    [includeIf "gitdir:~/dev/faculty/"]
+      path = ~/.config/git/profiles/faculty.gitconfig
+  '';
+
   personalSshConfig = "~/.config/ssh/profiles/personal";
   facultySshConfig = "~/.config/ssh/profiles/faculty";
 in
 {
-  programs.git = {
-    enable = true;
+  programs.git.enable = true;
 
-    settings = {
-      init.defaultBranch = "main";
-      user = {
-        name = personalProfile.name;
-        email = personalProfile.email;
-      };
-
-      includeIf."gitdir:~/dev/personal/".path = "~/.config/git/profiles/personal.gitconfig";
-      includeIf."gitdir:~/dev/faculty/".path = "~/.config/git/profiles/faculty.gitconfig";
-    };
-  };
-
+  home.file.".gitconfig".text = globalGitConfig;
   xdg.configFile."git/profiles/personal.gitconfig".text =
     profileGitConfig personalProfile personalSshConfig;
   xdg.configFile."git/profiles/faculty.gitconfig".text =

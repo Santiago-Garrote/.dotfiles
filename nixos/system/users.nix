@@ -1,4 +1,6 @@
 {
+  services.getty.autologinUser = "garro";
+
   users.users.garro = {
     isNormalUser = true;
     description = "Santiago Garrote";
