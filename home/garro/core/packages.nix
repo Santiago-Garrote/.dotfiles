@@ -9,6 +9,8 @@
     nixd
     nixfmt
 
+    # Desktop applications.
+    vesktop
     inkscape
     krita
     codex
