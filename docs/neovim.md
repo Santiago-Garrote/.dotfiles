@@ -1,74 +1,63 @@
 # Neovim Tooling Architecture
 
-This repository keeps editor plugins and external development tools separate.
+This repository keeps Neovim itself declarative and leaves editor behavior close
+to upstream defaults.
 
 ## What Nix Installs
 
-Home Manager enables Neovim, sets it as the default editor, and installs the
-Neovim wrapper. Nix also installs external tools that should be available from
-`PATH`, such as:
+Home Manager enables NixVim, which generates the Neovim wrapper through Nix
+modules. The current NixVim module intentionally only enables Neovim, sets it as
+the default editor, and adds the `vi`/`vim` aliases.
 
-- `git`, `ripgrep`, and `fd` for general editor and shell workflows.
-- `nixd` for Nix language server support.
-- `nixfmt` for Nix formatting.
+External tools that should be available from `PATH`, such as `git`, `ripgrep`,
+`fd`, `nixd`, and `nixfmt`, are managed separately from Neovim.
 
 Project-specific tools should usually live in a project `devShell`. In this
 repository, QML and Quickshell tools are provided by the flake dev shell.
 
-## What lazy.nvim Installs
+## What NixVim Configures
 
-`lazy.nvim` manages Neovim plugins. The configuration imports LazyVim defaults
-and local plugin specs from `lua/plugins/`.
-
-Plugin lock state belongs in `lazy-lock.json`.
+`home/garro/programs/neovim/default.nix` is intentionally minimal. It does not
+configure plugins, keymaps, language servers, formatters, linters, or custom
+Lua. This keeps the editor equivalent to a plain Neovim package managed through
+NixVim.
 
 ## Why Mason Is Disabled
 
-Mason is disabled because language servers, formatters, linters, debuggers, and
-command-line tools are managed by Nix. This keeps tool versions reproducible and
-avoids installing the same executable through both Mason and Nix.
+Mason is not configured. Language servers, formatters, linters, debuggers, and
+command-line tools should be managed by Nix when they are added later. This
+keeps tool versions reproducible and avoids installing the same executable
+through both Mason and Nix.
 
 ## Add a New Language
 
 1. Add reusable tools to Home Manager or project-only tools to a `devShell`.
-2. Add a focused plugin spec in `lua/plugins/<language>.lua`.
-3. Configure LSP, formatting, linting, and parsers to use executables from
-   `PATH`.
+2. Add focused NixVim configuration in `home/garro/programs/neovim/default.nix`.
+3. Configure any LSP, formatting, linting, and parser support to use
+   executables from `PATH`.
 4. Avoid Mason `ensure_installed` entries.
 5. Run the repository validation commands.
 
-## Inspect LSP Status
+## Inspect Runtime Status
 
 Useful Neovim commands:
 
 ```vim
 :checkhealth
-:checkhealth vim.lsp
-:LspInfo
 :messages
 ```
 
-## Inspect Formatter Selection
-
-Use:
-
-```vim
-:ConformInfo
-:set filetype?
-```
-
-For Nix files, formatting should resolve to `nixfmt`.
-
 ## Update Plugins
 
-Use:
+Update the NixVim flake input:
 
-```vim
-:Lazy
+```bash
+nix flake update nixvim
 ```
 
-After updating plugins, review and commit `lazy-lock.json` with the related
-Neovim configuration change.
+Then review and commit `flake.lock` with the related NixVim configuration
+change. With the current minimal setup, this updates NixVim itself rather than a
+separate plugin lock file.
 
 ## Validate the Configuration
 
@@ -83,10 +72,6 @@ nix eval ".#nixosConfigurations.laptop.config.system.build.toplevel.drvPath"
 Neovim checks:
 
 ```vim
-:LazyHealth
 :checkhealth
-:checkhealth vim.lsp
-:LspInfo
-:ConformInfo
 :messages
 ```

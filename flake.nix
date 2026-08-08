@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     umu = {
       url = "git+https://github.com/Open-Wine-Components/umu-launcher.git?dir=packaging/nix&shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +24,7 @@
     inputs@{
       nixpkgs,
       home-manager,
+      nixvim,
       umu,
       ...
     }:
@@ -58,6 +64,10 @@
 
             # Preserve conflicting manual files instead of deleting them.
             home-manager.backupFileExtension = "pre-home-manager";
+
+            home-manager.sharedModules = [
+              nixvim.homeModules.nixvim
+            ];
 
             home-manager.users.garro = import ./home/garro { inherit umuPackage; };
           }
