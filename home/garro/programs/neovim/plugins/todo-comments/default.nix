@@ -1,7 +1,0 @@
-{ ... }:
-
-{
-  imports = [
-    ./todo-comments.nix
-  ];
-}
