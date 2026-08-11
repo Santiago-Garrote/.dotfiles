@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./lint.nix
+    ./treesitter.nix
   ];
 }

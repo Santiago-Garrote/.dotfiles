@@ -2,4 +2,5 @@
 
 {
   plugins.neotest.enable = true;
+
 }

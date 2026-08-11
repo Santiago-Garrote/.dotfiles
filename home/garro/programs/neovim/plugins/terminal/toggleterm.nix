@@ -2,4 +2,5 @@
 
 {
   plugins.toggleterm.enable = true;
+
 }

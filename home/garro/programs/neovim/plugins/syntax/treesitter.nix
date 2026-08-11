@@ -2,4 +2,5 @@
 
 {
   plugins.treesitter.enable = true;
+
 }
