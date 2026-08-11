@@ -1,13 +1,5 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
-let
-  pluginsDir = ./plugins;
-  pluginFiles = lib.pipe (builtins.readDir pluginsDir) [
-    builtins.attrNames
-    (builtins.filter (name: lib.hasSuffix ".nix" name))
-    (builtins.map (name: pluginsDir + "/${name}"))
-  ];
-in
 {
   programs.nixvim = {
     enable = true;
@@ -17,6 +9,8 @@ in
 
     nixpkgs.source = pkgs.path;
 
-    imports = pluginFiles;
+    imports = [
+      ./plugins
+    ];
   };
 }
