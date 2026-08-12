@@ -10,6 +10,7 @@
     nixpkgs.source = pkgs.path;
 
     imports = [
+      ./core
       ./plugins
     ];
   };
