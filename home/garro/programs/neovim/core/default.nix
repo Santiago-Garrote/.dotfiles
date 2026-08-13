@@ -1,6 +1,11 @@
 { ... }:
 
 {
+  globals = {
+    mapleader = " ";
+    maplocalleader = " ";
+  };
+
   imports = [
     ./editing.nix
     ./folds.nix
