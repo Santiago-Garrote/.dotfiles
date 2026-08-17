@@ -25,6 +25,8 @@
         max_width = 120;
         max_height = 30;
       };
+
+      default_file_explorer = false;
     };
   };
 

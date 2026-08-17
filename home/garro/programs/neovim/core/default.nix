@@ -7,6 +7,7 @@
   };
 
   imports = [
+    ./autocmds.nix
     ./editing.nix
     ./folds.nix
     ./navigation.nix

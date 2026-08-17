@@ -21,6 +21,8 @@
           hide_gitignored = true;
           hide_hidden = false;
         };
+
+        hijack_netrw_behavior = "open_default";
       };
 
       window = {

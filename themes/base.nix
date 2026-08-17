@@ -1,7 +1,7 @@
 {
   typography = {
-    interface = "IBM Plex Mono";
-    monospace = "IBM Plex Mono";
+    interface = "IBM Plex Mono Nerd";
+    monospace = "IBM Plex Mono Nerd";
     display = "DSEG7 Classic";
 
     sizes = {

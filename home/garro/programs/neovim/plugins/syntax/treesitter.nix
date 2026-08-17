@@ -1,6 +1,12 @@
 { ... }:
 
 {
-  plugins.treesitter.enable = true;
+  plugins.treesitter = {
 
+    enable = true;
+
+    settings = {
+      highlight.enable = true;
+    };
+  };
 }
