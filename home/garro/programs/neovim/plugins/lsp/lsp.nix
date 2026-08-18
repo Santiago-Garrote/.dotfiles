@@ -4,7 +4,23 @@
   plugins.lsp = {
     enable = true;
 
+    capabilities = ''
+      capabilities.workspace.fileOperations = {
+        willRename = true,
+        didRename = true,
+      }
+    '';
+
     servers = {
+      nixd = {
+        enable = true;
+        packageFallback = true;
+        settings = {
+          formatting.command = [ "nixfmt" ];
+          nixpkgs.expr = "import <nixpkgs> {}";
+        };
+      };
+
       jdtls = {
         enable = true;
         packageFallback = true;
@@ -81,4 +97,34 @@
       options.desc = "Hover documentation";
     }
   ];
+
+  extraConfigLua = ''
+    function _G.lsp_on_rename(from, to)
+      local clients = vim.lsp.get_clients()
+
+      for _, client in ipairs(clients) do
+        if client:supports_method("workspace/willRenameFiles") then
+          local response = client:request_sync(
+            "workspace/willRenameFiles",
+            {
+              files = {
+                {
+                  oldUri = vim.uri_from_fname(from),
+                  newUri = vim.uri_from_fname(to),
+                },
+              },
+            },
+            1000
+          )
+
+          if response and response.result then
+            vim.lsp.util.apply_workspace_edit(
+              response.result,
+              client.offset_encoding
+            )
+          end
+        end
+      end
+    end
+  '';
 }

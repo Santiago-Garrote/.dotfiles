@@ -15,6 +15,7 @@
     ./cmp-nvim-lsp.nix
     ./lsp.nix
     ./luasnip.nix
+    ./file-operations.nix
     ./none-ls.nix
   ];
 }

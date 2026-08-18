@@ -7,6 +7,7 @@
     ./hyprland.nix
     ./keyboard.nix
     ./locale.nix
+    ./lsp.nix
     ./networking.nix
     ./nix.nix
     ./nixpkgs.nix

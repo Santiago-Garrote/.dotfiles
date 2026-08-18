@@ -48,4 +48,5 @@
       options.desc = "Reveal current file";
     }
   ];
+
 }
