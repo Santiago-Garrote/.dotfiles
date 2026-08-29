@@ -18,6 +18,11 @@
       url = "git+https://github.com/Open-Wine-Components/umu-launcher.git?dir=packaging/nix&shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    antigravity = {
+      url = "github:Hy4ri/antigravity-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,6 +31,7 @@
       home-manager,
       nixvim,
       umu,
+      antigravity,
       ...
     }:
     let
@@ -40,6 +46,7 @@
       };
 
       umuPackage = umu.packages.${system}.default;
+      antigravityPackage = antigravity.packages.${system}.default;
     in
     {
       packages.${system}.dseg = pkgs.dseg;
@@ -69,7 +76,10 @@
               nixvim.homeModules.nixvim
             ];
 
-            home-manager.users.garro = import ./home/garro { inherit umuPackage; };
+            home-manager.users.garro = import ./home/garro {
+              inherit umuPackage;
+              inherit antigravityPackage;
+            };
           }
         ];
       };

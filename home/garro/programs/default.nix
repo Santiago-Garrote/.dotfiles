@@ -2,6 +2,8 @@
   pkgs,
   theme,
   umuPackage,
+  antigravityPackage,
+  ...
 }:
 
 {
@@ -18,5 +20,6 @@
     ./obs-studio
     ./ssh
     (import ./wlogout { inherit pkgs theme; })
+    (import ./agents { inherit antigravityPackage; })
   ];
 }

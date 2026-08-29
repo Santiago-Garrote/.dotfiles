@@ -8,6 +8,7 @@
     fd
     nixd
     nixfmt
+    tree
 
     # Desktop applications.
     vesktop

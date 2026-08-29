@@ -69,5 +69,31 @@
       mode = "n";
       options.desc = "Previous tab";
     }
+
+    # Window resizing
+    {
+      mode = "n";
+      key = "<C-Up>";
+      action = "<cmd>resize +2<CR>";
+      options.desc = "Increase window height";
+    }
+    {
+      mode = "n";
+      key = "<C-Down>";
+      action = "<cmd>resize -2<CR>";
+      options.desc = "Decrease window height";
+    }
+    {
+      mode = "n";
+      key = "<C-Left>";
+      action = "<cmd>vertical resize -2<CR>";
+      options.desc = "Decrease window width";
+    }
+    {
+      mode = "n";
+      key = "<C-Right>";
+      action = "<cmd>vertical resize +2<CR>";
+      options.desc = "Increase window width";
+    }
   ];
 }

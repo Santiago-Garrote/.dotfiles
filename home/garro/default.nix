@@ -1,4 +1,4 @@
-{ umuPackage }:
+{ umuPackage, antigravityPackage }:
 
 { pkgs, ... }:
 
@@ -9,7 +9,14 @@ in
   imports = [
     ./core
     (import ./desktop { inherit pkgs theme; })
-    (import ./programs { inherit pkgs theme umuPackage; })
+    (import ./programs {
+      inherit
+        pkgs
+        theme
+        umuPackage
+        antigravityPackage
+        ;
+    })
     (import ./services { inherit pkgs theme; })
   ];
 }

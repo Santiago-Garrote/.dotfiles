@@ -32,6 +32,16 @@
         packageFallback = true;
         package = null;
       };
+
+      rust_analyzer = {
+        enable = true;
+        installCargo = false;
+        installRustc = false;
+      };
+
+      pyright = {
+        enable = true;
+      };
     };
   };
 

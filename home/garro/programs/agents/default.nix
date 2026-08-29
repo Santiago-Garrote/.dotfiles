@@ -1,0 +1,7 @@
+{ antigravityPackage, ... }:
+
+{
+  home.packages = [
+    antigravityPackage
+  ];
+}
