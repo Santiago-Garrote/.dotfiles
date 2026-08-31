@@ -16,6 +16,7 @@ let
     export GIT_COMMITTER_NAME="${profile.name}"
     export GIT_COMMITTER_EMAIL="${profile.email}"
     export GIT_SSH_COMMAND="ssh -F ${sshConfig}"
+    export CLAUDE_CONFIG_DIR="$HOME/.claude/accounts/${profileName}"
   '';
 
   profileGitConfig = profile: sshConfig: ''

@@ -1,4 +1,4 @@
-{ umuPackage, antigravityPackage }:
+{ umuPackage, claudeCodePackage }:
 
 { pkgs, ... }:
 
@@ -14,7 +14,7 @@ in
         pkgs
         theme
         umuPackage
-        antigravityPackage
+        claudeCodePackage
         ;
     })
     (import ./services { inherit pkgs theme; })

@@ -19,8 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    antigravity = {
-      url = "github:Hy4ri/antigravity-flake";
+    claudeCode = {
+      url = "github:ryoppippi/nix-claude-code";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -31,7 +31,7 @@
       home-manager,
       nixvim,
       umu,
-      antigravity,
+      claudeCode,
       ...
     }:
     let
@@ -46,7 +46,7 @@
       };
 
       umuPackage = umu.packages.${system}.default;
-      antigravityPackage = antigravity.packages.${system}.default;
+      claudeCodePackage = claudeCode.packages.${system}.default;
     in
     {
       packages.${system}.dseg = pkgs.dseg;
@@ -78,7 +78,7 @@
 
             home-manager.users.garro = import ./home/garro {
               inherit umuPackage;
-              inherit antigravityPackage;
+              inherit claudeCodePackage;
             };
           }
         ];

@@ -1,7 +1,7 @@
-{ antigravityPackage, ... }:
+{ claudeCodePackage, ... }:
 
 {
   home.packages = [
-    antigravityPackage
+    claudeCodePackage
   ];
 }

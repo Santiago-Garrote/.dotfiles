@@ -1,22 +1,22 @@
 {
   "nodes": {
-    "antigravity": {
+    "claudeCode": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1787246638,
-        "narHash": "sha256-jjl99DKZCIVlZQHE1Kv3RCID3Bq2XkVrnhhvG0RIZWc=",
-        "owner": "Hy4ri",
-        "repo": "antigravity-flake",
-        "rev": "5f4a57b05b243ab85193f820fdc2394b2155f614",
+        "lastModified": 1788199306,
+        "narHash": "sha256-/8oL8PCN/MB0+JVBfjYTEDy5+tLux579pATfsnCgdWM=",
+        "owner": "ryoppippi",
+        "repo": "nix-claude-code",
+        "rev": "66c06c10ac580d80d80252ef5efcad02c1d7022a",
         "type": "github"
       },
       "original": {
-        "owner": "Hy4ri",
-        "repo": "antigravity-flake",
+        "owner": "ryoppippi",
+        "repo": "nix-claude-code",
         "type": "github"
       }
     },
@@ -103,7 +103,7 @@
     },
     "root": {
       "inputs": {
-        "antigravity": "antigravity",
+        "claudeCode": "claudeCode",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
