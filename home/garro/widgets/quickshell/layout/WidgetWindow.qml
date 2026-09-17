@@ -16,24 +16,30 @@ PanelWindow {
 	property int windowHeight: 92
 	property bool shown: true
 	property var inputMask: null
+	// Every other widget here is a read-only, click-through readout; opting
+	// a specific instance into this is what lets it actually take keyboard
+	// input (e.g. the embedded terminal widget).
+	property bool keyboardFocusable: false
 
 	implicitWidth: windowWidth
 	implicitHeight: windowHeight
 	color: "transparent"
 	mask: inputMask
 	exclusionMode: ExclusionMode.Ignore
-	focusable: false
+	focusable: keyboardFocusable
 	aboveWindows: false
 
 	WlrLayershell.layer: WlrLayer.Background
 	WlrLayershell.namespace: "quickshell-desktop-widgets"
-	WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
+	WlrLayershell.keyboardFocus: keyboardFocusable ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
+
+	readonly property bool fill: placement === "fill"
 
 	anchors {
-		left: placement.indexOf("left") !== -1
-		right: placement.indexOf("right") !== -1
-		top: placement.indexOf("top") !== -1
-		bottom: placement.indexOf("bottom") !== -1
+		left: root.fill || placement.indexOf("left") !== -1
+		right: root.fill || placement.indexOf("right") !== -1
+		top: root.fill || placement.indexOf("top") !== -1
+		bottom: root.fill || placement.indexOf("bottom") !== -1
 	}
 
 	margins {

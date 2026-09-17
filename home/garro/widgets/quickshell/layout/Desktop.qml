@@ -101,4 +101,17 @@ Scope {
 			theme: root.theme
 		}
 	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "fill"
+		margin: 0
+		keyboardFocusable: true
+
+		TerminalWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
 }

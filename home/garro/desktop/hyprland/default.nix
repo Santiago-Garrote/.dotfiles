@@ -8,6 +8,7 @@ let
   colors = theme.colors;
   geometry = theme.geometry;
   typography = theme.typography;
+  kvitterm = import ../quickshell/kvitterm.nix { inherit pkgs; };
 in
 {
   home.packages = with pkgs; [
@@ -69,6 +70,10 @@ in
 
     hl.env("XCURSOR_SIZE", "24")
     hl.env("HYPRCURSOR_SIZE", "24")
+
+    -- Lets Quickshell's QML engine "import KvitTerm" for the embedded
+    -- terminal widget; see desktop/quickshell/kvitterm.nix.
+    hl.env("QML_IMPORT_PATH", "${kvitterm}/qml")
 
     ---------------------
     ---- LOOK & FEEL ----
