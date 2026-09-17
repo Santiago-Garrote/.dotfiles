@@ -10,7 +10,7 @@
   imports = [
     ./bash
     ./direnv
-    ./firefox
+    ./browsers
     ./git
     (import ./hyprlock { inherit theme; })
     (import ./kitty { inherit theme; })
