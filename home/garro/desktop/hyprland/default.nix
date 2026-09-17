@@ -40,6 +40,14 @@ in
       scale = 1,
     })
 
+    -- HDMI output clones the internal display
+    hl.monitor({
+      output = "HDMI-A-1",
+      mode = "preferred",
+      position = "auto",
+      mirror = "eDP-1",
+    })
+
     ----------------------
     ---- APPLICATIONS ----
     ----------------------
