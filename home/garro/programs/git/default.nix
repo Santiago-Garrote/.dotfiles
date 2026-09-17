@@ -17,6 +17,7 @@ let
     export GIT_COMMITTER_EMAIL="${profile.email}"
     export GIT_SSH_COMMAND="ssh -F ${sshConfig}"
     export CLAUDE_CONFIG_DIR="$HOME/.claude/accounts/${profileName}"
+    export GH_CONFIG_DIR="$HOME/.config/gh-${profileName}"
   '';
 
   profileGitConfig = profile: sshConfig: ''
@@ -44,6 +45,7 @@ let
 in
 {
   programs.git.enable = true;
+  programs.gh.enable = true;
 
   home.file.".gitconfig".text = globalGitConfig;
   xdg.configFile."git/profiles/personal.gitconfig".text =
