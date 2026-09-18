@@ -38,7 +38,7 @@ Item {
 
 		Row {
 			anchors.horizontalCenter: parent.horizontalCenter
-			spacing: root.theme.spacing.medium
+			spacing: root.theme.spacing.medium * 3
 
 			// Hours: tens digit never exceeds 2, so it only needs 2 bits.
 			Row {
