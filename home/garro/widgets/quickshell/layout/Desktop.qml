@@ -12,12 +12,10 @@ Scope {
 		&& workspace.toplevels !== null
 		&& workspace.toplevels.values.length === 0
 
-	// Left-hand readout zone: two card columns. Everything to their right
-	// belongs to the terminal.
-	readonly property int columnWidth: 220
+	// Left-hand readout column. Everything to its right belongs to the
+	// terminal.
+	readonly property int columnWidth: 330
 	readonly property int columnGap: 16
-	readonly property int columnBOffset: columnWidth + columnGap
-	readonly property int leftZoneWidth: columnWidth * 2 + columnGap
 
 	readonly property int bannerHeight: 128
 	readonly property int cardHeight: 148
@@ -30,12 +28,12 @@ Scope {
 	// panel clear of it.
 	readonly property int topClearance: root.theme.sizes.barHeight
 
-	// Banner: system clock, spanning both card columns.
+	// Banner: system clock.
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
 		placement: "top-left"
-		windowWidth: root.leftZoneWidth
+		windowWidth: root.columnWidth
 		windowHeight: root.bannerHeight
 		margin: root.theme.spacing.gapOuter
 		insetTop: root.topClearance
@@ -46,8 +44,6 @@ Scope {
 		}
 	}
 
-	// Column A: the widgets that were already active before this rework,
-	// top-anchored below the clock banner.
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
@@ -96,67 +92,16 @@ Scope {
 		}
 	}
 
-	// Column B: this rework's additions, tucked into the bottom-left corner
-	// instead of competing with column A for top billing. Anchored to the
-	// bottom edge, so it stacks upward.
-	WidgetWindow {
-		theme: root.theme
-		shown: root.widgetsVisible
-		placement: "bottom-left"
-		windowWidth: root.columnWidth
-		windowHeight: root.cardHeight
-		margin: root.theme.spacing.gapOuter
-		offsetX: root.columnBOffset
-		offsetY: root.rowStride * 2
-
-		WindowStateWidget {
-			anchors.fill: parent
-			theme: root.theme
-		}
-	}
-
-	WidgetWindow {
-		theme: root.theme
-		shown: root.widgetsVisible
-		placement: "bottom-left"
-		windowWidth: root.columnWidth
-		windowHeight: root.cardHeight
-		margin: root.theme.spacing.gapOuter
-		offsetX: root.columnBOffset
-		offsetY: root.rowStride
-
-		CpuStatusWidget {
-			anchors.fill: parent
-			theme: root.theme
-		}
-	}
-
-	WidgetWindow {
-		theme: root.theme
-		shown: root.widgetsVisible
-		placement: "bottom-left"
-		windowWidth: root.columnWidth
-		windowHeight: root.cardHeight
-		margin: root.theme.spacing.gapOuter
-		offsetX: root.columnBOffset
-
-		MemoryStatusWidget {
-			anchors.fill: parent
-			theme: root.theme
-		}
-	}
-
-	// Terminal: fills everything right of the readout zone.
+	// Terminal: fills everything right of the readout column.
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
 		placement: "fill"
 		margin: root.theme.spacing.gapOuter
 		insetTop: root.topClearance
-		// Leaves the left readout zone (plus a breathing gap) untouched;
-		// the terminal takes the rest of the screen, roughly its right
-		// two-thirds.
-		insetLeft: root.leftZoneWidth + root.columnGap
+		// Leaves the readout column (plus a breathing gap) untouched; the
+		// terminal takes the rest of the screen.
+		insetLeft: root.columnWidth + root.columnGap
 		keyboardFocusable: true
 
 		TerminalWidget {
