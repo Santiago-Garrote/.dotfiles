@@ -46,7 +46,8 @@ Scope {
 		}
 	}
 
-	// Column A.
+	// Column A: the widgets that were already active before this rework,
+	// top-anchored below the clock banner.
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
@@ -55,56 +56,6 @@ Scope {
 		windowHeight: root.cardHeight
 		margin: root.theme.spacing.gapOuter
 		insetTop: root.topClearance
-		offsetY: root.gridStartOffset
-
-		WindowStateWidget {
-			anchors.fill: parent
-			theme: root.theme
-		}
-	}
-
-	WidgetWindow {
-		theme: root.theme
-		shown: root.widgetsVisible
-		placement: "top-left"
-		windowWidth: root.columnWidth
-		windowHeight: root.cardHeight
-		margin: root.theme.spacing.gapOuter
-		insetTop: root.topClearance
-		offsetY: root.gridStartOffset + root.rowStride
-
-		CpuStatusWidget {
-			anchors.fill: parent
-			theme: root.theme
-		}
-	}
-
-	WidgetWindow {
-		theme: root.theme
-		shown: root.widgetsVisible
-		placement: "top-left"
-		windowWidth: root.columnWidth
-		windowHeight: root.cardHeight
-		margin: root.theme.spacing.gapOuter
-		insetTop: root.topClearance
-		offsetY: root.gridStartOffset + root.rowStride * 2
-
-		MemoryStatusWidget {
-			anchors.fill: parent
-			theme: root.theme
-		}
-	}
-
-	// Column B.
-	WidgetWindow {
-		theme: root.theme
-		shown: root.widgetsVisible
-		placement: "top-left"
-		windowWidth: root.columnWidth
-		windowHeight: root.cardHeight
-		margin: root.theme.spacing.gapOuter
-		insetTop: root.topClearance
-		offsetX: root.columnBOffset
 		offsetY: root.gridStartOffset
 
 		NetworkStatusWidget {
@@ -121,10 +72,9 @@ Scope {
 		windowHeight: root.cardHeight
 		margin: root.theme.spacing.gapOuter
 		insetTop: root.topClearance
-		offsetX: root.columnBOffset
 		offsetY: root.gridStartOffset + root.rowStride
 
-		AudioStatusWidget {
+		SystemStatusWidget {
 			anchors.fill: parent
 			theme: root.theme
 		}
@@ -138,10 +88,59 @@ Scope {
 		windowHeight: root.cardHeight
 		margin: root.theme.spacing.gapOuter
 		insetTop: root.topClearance
-		offsetX: root.columnBOffset
 		offsetY: root.gridStartOffset + root.rowStride * 2
 
-		SystemStatusWidget {
+		AudioStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	// Column B: this rework's additions, tucked into the bottom-left corner
+	// instead of competing with column A for top billing. Anchored to the
+	// bottom edge, so it stacks upward.
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-left"
+		windowWidth: root.columnWidth
+		windowHeight: root.cardHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnBOffset
+		offsetY: root.rowStride * 2
+
+		WindowStateWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-left"
+		windowWidth: root.columnWidth
+		windowHeight: root.cardHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnBOffset
+		offsetY: root.rowStride
+
+		CpuStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-left"
+		windowWidth: root.columnWidth
+		windowHeight: root.cardHeight
+		margin: root.theme.spacing.gapOuter
+		offsetX: root.columnBOffset
+
+		MemoryStatusWidget {
 			anchors.fill: parent
 			theme: root.theme
 		}
