@@ -16,6 +16,14 @@ PanelWindow {
 	property int windowHeight: 92
 	property bool shown: true
 	property var inputMask: null
+	// Extra per-edge margin on top of `margin`/offsets, independent of the
+	// placement string. Used to carve out a fixed zone on one side of the
+	// screen (e.g. reserving space for a sibling panel) without disturbing
+	// the other edges.
+	property int insetLeft: 0
+	property int insetRight: 0
+	property int insetTop: 0
+	property int insetBottom: 0
 	// Every other widget here is a read-only, click-through readout; opting
 	// a specific instance into this is what lets it actually take keyboard
 	// input (e.g. the embedded terminal widget).
@@ -43,10 +51,10 @@ PanelWindow {
 	}
 
 	margins {
-		left: margin + (placement.indexOf("left") !== -1 ? offsetX : 0)
-		right: margin + (placement.indexOf("right") !== -1 ? offsetX : 0)
-		top: margin + (placement.indexOf("top") !== -1 ? offsetY : 0)
-		bottom: margin + (placement.indexOf("bottom") !== -1 ? offsetY : 0)
+		left: margin + (placement.indexOf("left") !== -1 ? offsetX : 0) + insetLeft
+		right: margin + (placement.indexOf("right") !== -1 ? offsetX : 0) + insetRight
+		top: margin + (placement.indexOf("top") !== -1 ? offsetY : 0) + insetTop
+		bottom: margin + (placement.indexOf("bottom") !== -1 ? offsetY : 0) + insetBottom
 	}
 
 	Item {
