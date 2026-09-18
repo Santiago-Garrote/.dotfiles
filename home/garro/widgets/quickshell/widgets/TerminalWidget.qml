@@ -8,14 +8,13 @@ Item {
 	required property QtObject theme
 
 	readonly property int framePadding: root.theme.spacing.medium
-	readonly property int terminalWidth: 640
-	readonly property int terminalHeight: 360
 
 	Column {
+		id: header
+
 		anchors {
+			top: parent.top
 			horizontalCenter: parent.horizontalCenter
-			bottom: frame.top
-			bottomMargin: root.theme.spacing.medium
 		}
 		spacing: root.theme.spacing.small
 
@@ -27,19 +26,25 @@ Item {
 
 		ReadoutDivider {
 			theme: root.theme
-			dividerWidth: root.terminalWidth
+			dividerWidth: frame.width
 		}
 	}
 
 	// Oscilloscope-frame treatment matching PointerCoordinatesWidget's grid:
 	// a thin outline (no fill) around the content, corner-bracket reticle
 	// accents, and a faint scanline texture for the CRT/VFD read on it.
+	// Fills whatever space the surrounding window gives it, rather than a
+	// fixed pixel size, so the terminal grows with its panel.
 	Item {
 		id: frame
 
-		anchors.centerIn: parent
-		width: root.terminalWidth + root.framePadding * 2
-		height: root.terminalHeight + root.framePadding * 2
+		anchors {
+			top: header.bottom
+			topMargin: root.theme.spacing.medium
+			left: parent.left
+			right: parent.right
+			bottom: parent.bottom
+		}
 
 		Rectangle {
 			anchors.fill: parent
@@ -52,9 +57,8 @@ Item {
 		TerminalView {
 			id: terminal
 
-			anchors.centerIn: parent
-			width: root.terminalWidth
-			height: root.terminalHeight
+			anchors.fill: parent
+			anchors.margins: root.framePadding
 
 			font.family: root.theme.fonts.monospace
 			font.pointSize: root.theme.fontSizes.medium
