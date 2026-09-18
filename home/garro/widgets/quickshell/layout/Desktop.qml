@@ -17,10 +17,11 @@ Scope {
 	readonly property int columnWidth: 330
 	readonly property int columnGap: 16
 
-	readonly property int bannerHeight: 128
+	readonly property int workspaceHeight: 92
+	readonly property int clockHeight: 128
 	readonly property int cardHeight: 148
 	readonly property int rowGap: 14
-	readonly property int gridStartOffset: bannerHeight + rowGap
+	readonly property int gridStartOffset: workspaceHeight + rowGap
 	readonly property int rowStride: cardHeight + rowGap
 
 	// Waybar (still autostarted independently, see docs/quickshell-widgets.md)
@@ -28,17 +29,16 @@ Scope {
 	// panel clear of it.
 	readonly property int topClearance: root.theme.sizes.barHeight
 
-	// Banner: system clock.
 	WidgetWindow {
 		theme: root.theme
 		shown: root.widgetsVisible
 		placement: "top-left"
 		windowWidth: root.columnWidth
-		windowHeight: root.bannerHeight
+		windowHeight: root.workspaceHeight
 		margin: root.theme.spacing.gapOuter
 		insetTop: root.topClearance
 
-		ClockWidget {
+		WorkspaceWidget {
 			anchors.fill: parent
 			theme: root.theme
 		}
@@ -87,6 +87,20 @@ Scope {
 		offsetY: root.gridStartOffset + root.rowStride * 2
 
 		AudioStatusWidget {
+			anchors.fill: parent
+			theme: root.theme
+		}
+	}
+
+	WidgetWindow {
+		theme: root.theme
+		shown: root.widgetsVisible
+		placement: "bottom-left"
+		windowWidth: root.columnWidth
+		windowHeight: root.clockHeight
+		margin: root.theme.spacing.gapOuter
+
+		ClockWidget {
 			anchors.fill: parent
 			theme: root.theme
 		}
