@@ -9,7 +9,6 @@ Item {
 
 	readonly property var workspace: Hyprland.focusedWorkspace
 	readonly property int workspaceValue: workspace !== null ? workspace.id : 0
-	readonly property string workspaceLabel: workspace !== null ? workspace.id.toString() : "--"
 
 	Column {
 		anchors.centerIn: parent
@@ -31,13 +30,6 @@ Item {
 			theme: root.theme
 			value: root.workspaceValue
 			horizontal: true
-		}
-
-		Label {
-			anchors.horizontalCenter: parent.horizontalCenter
-			theme: root.theme
-			text: root.workspaceLabel
-			size: root.theme.fontSizes.small
 		}
 	}
 }

@@ -10,7 +10,6 @@ Item {
 	readonly property int hours: now.getHours()
 	readonly property int minutes: now.getMinutes()
 	readonly property int seconds: now.getSeconds()
-	readonly property string timeText: Qt.formatTime(now, "HH:mm:ss")
 
 	Timer {
 		interval: 1000
@@ -41,57 +40,59 @@ Item {
 			anchors.horizontalCenter: parent.horizontalCenter
 			spacing: root.theme.spacing.medium
 
-			// Hours.
+			// Hours: tens digit never exceeds 2, so it only needs 2 bits.
 			Row {
 				spacing: root.theme.spacing.small
 
 				BitColumn {
+					anchors.bottom: parent.bottom
 					theme: root.theme
 					value: Math.floor(root.hours / 10)
+					bitCount: 2
 				}
 
 				BitColumn {
+					anchors.bottom: parent.bottom
 					theme: root.theme
 					value: root.hours % 10
 				}
 			}
 
-			// Minutes.
+			// Minutes: tens digit never exceeds 5, so it only needs 3 bits.
 			Row {
 				spacing: root.theme.spacing.small
 
 				BitColumn {
+					anchors.bottom: parent.bottom
 					theme: root.theme
 					value: Math.floor(root.minutes / 10)
+					bitCount: 3
 				}
 
 				BitColumn {
+					anchors.bottom: parent.bottom
 					theme: root.theme
 					value: root.minutes % 10
 				}
 			}
 
-			// Seconds.
+			// Seconds: same range as minutes.
 			Row {
 				spacing: root.theme.spacing.small
 
 				BitColumn {
+					anchors.bottom: parent.bottom
 					theme: root.theme
 					value: Math.floor(root.seconds / 10)
+					bitCount: 3
 				}
 
 				BitColumn {
+					anchors.bottom: parent.bottom
 					theme: root.theme
 					value: root.seconds % 10
 				}
 			}
-		}
-
-		Label {
-			anchors.horizontalCenter: parent.horizontalCenter
-			theme: root.theme
-			text: root.timeText
-			size: root.theme.fontSizes.small
 		}
 	}
 }
