@@ -11,6 +11,7 @@ pkgs.writeText "Theme.qml" ''
       readonly property color foreground: "#${theme.colors.foreground}"
       readonly property color muted: "#${theme.colors.muted}"
       readonly property color accent: "#${theme.colors.accent}"
+      readonly property color error: "#${theme.colors.error}"
     }
 
     readonly property QtObject spacing: QtObject {
