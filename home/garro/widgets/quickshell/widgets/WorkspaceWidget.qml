@@ -8,6 +8,7 @@ Item {
 	required property QtObject theme
 
 	readonly property var workspace: Hyprland.focusedWorkspace
+	readonly property int workspaceValue: workspace !== null ? workspace.id : 0
 	readonly property string workspaceLabel: workspace !== null ? workspace.id.toString() : "--"
 
 	Column {
@@ -25,30 +26,18 @@ Item {
 			dividerWidth: 120
 		}
 
-		Item {
+		BitColumn {
 			anchors.horizontalCenter: parent.horizontalCenter
-			width: 96
-			height: 42
+			theme: root.theme
+			value: root.workspaceValue
+			horizontal: true
+		}
 
-			Text {
-				anchors.centerIn: parent
-				text: root.workspaceLabel
-				color: root.theme.colors.accent
-				font.family: root.theme.fonts.display
-				font.pixelSize: 42
-				font.letterSpacing: 0
-				opacity: 0.24
-			}
-
-			Text {
-				anchors.centerIn: parent
-				text: root.workspaceLabel
-				color: root.theme.colors.accent
-				font.family: root.theme.fonts.display
-				font.pixelSize: 42
-				font.letterSpacing: 0
-				opacity: 0.96
-			}
+		Label {
+			anchors.horizontalCenter: parent.horizontalCenter
+			theme: root.theme
+			text: root.workspaceLabel
+			size: root.theme.fontSizes.small
 		}
 	}
 }

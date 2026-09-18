@@ -7,6 +7,9 @@ Item {
 	required property QtObject theme
 
 	property date now: new Date()
+	readonly property int hours: now.getHours()
+	readonly property int minutes: now.getMinutes()
+	readonly property int seconds: now.getSeconds()
 	readonly property string timeText: Qt.formatTime(now, "HH:mm:ss")
 
 	Timer {
@@ -34,36 +37,60 @@ Item {
 			dividerWidth: 320
 		}
 
-		Item {
+		Row {
 			anchors.horizontalCenter: parent.horizontalCenter
-			width: 390
-			height: 58
+			spacing: root.theme.spacing.medium
 
-			Text {
-				anchors.centerIn: parent
-				text: root.timeText
-				color: root.theme.colors.accent
-				font.family: root.theme.fonts.display
-				font.pixelSize: root.theme.fontSizes.clockDigit
-				font.letterSpacing: 0
-				opacity: 0.22
+			// Hours.
+			Row {
+				spacing: root.theme.spacing.small
+
+				BitColumn {
+					theme: root.theme
+					value: Math.floor(root.hours / 10)
+				}
+
+				BitColumn {
+					theme: root.theme
+					value: root.hours % 10
+				}
 			}
 
-			Text {
-				anchors.centerIn: parent
-				text: root.timeText
-				color: root.theme.colors.accent
-				font.family: root.theme.fonts.display
-				font.pixelSize: root.theme.fontSizes.clockDigit
-				font.letterSpacing: 0
-				opacity: 0.96
+			// Minutes.
+			Row {
+				spacing: root.theme.spacing.small
+
+				BitColumn {
+					theme: root.theme
+					value: Math.floor(root.minutes / 10)
+				}
+
+				BitColumn {
+					theme: root.theme
+					value: root.minutes % 10
+				}
+			}
+
+			// Seconds.
+			Row {
+				spacing: root.theme.spacing.small
+
+				BitColumn {
+					theme: root.theme
+					value: Math.floor(root.seconds / 10)
+				}
+
+				BitColumn {
+					theme: root.theme
+					value: root.seconds % 10
+				}
 			}
 		}
 
-		StatusLine {
+		Label {
+			anchors.horizontalCenter: parent.horizontalCenter
 			theme: root.theme
-			name: "MODE"
-			value: "24H"
+			text: root.timeText
 			size: root.theme.fontSizes.small
 		}
 	}

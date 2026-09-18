@@ -18,7 +18,7 @@ Scope {
 	readonly property int columnGap: 16
 
 	readonly property int workspaceHeight: 92
-	readonly property int clockHeight: 128
+	readonly property int clockHeight: 165
 	readonly property int cardHeight: 148
 	readonly property int rowGap: 14
 	readonly property int gridStartOffset: workspaceHeight + rowGap
