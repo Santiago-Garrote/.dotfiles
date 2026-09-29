@@ -3,6 +3,7 @@
   theme,
   umuPackage,
   claudeCodePackage,
+  codebaseMemoryMcpPackage,
   ...
 }:
 
@@ -20,6 +21,6 @@
     ./obs-studio
     ./ssh
     (import ./wlogout { inherit pkgs theme; })
-    (import ./agents { inherit claudeCodePackage; })
+    (import ./agents { inherit claudeCodePackage codebaseMemoryMcpPackage; })
   ];
 }

@@ -9,11 +9,14 @@
     nixd
     nixfmt
     tree
+    tmux
 
     # Desktop applications.
     vesktop
     inkscape
     krita
     codex
+    zathura
+    signal-desktop
   ];
 }

@@ -4,6 +4,7 @@
     ./flatpak.nix
     ./fonts.nix
     ./graphics.nix
+    ./greetd.nix
     ./hyprland.nix
     ./keyboard.nix
     ./locale.nix

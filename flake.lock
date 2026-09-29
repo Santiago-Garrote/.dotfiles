@@ -20,6 +20,26 @@
         "type": "github"
       }
     },
+    "codebaseMemoryMcp": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790039048,
+        "narHash": "sha256-NTZUeKh4Yv0o4utiB3q4LZX7+1Xz9Fbb0erf5Kt8O4o=",
+        "owner": "DeusData",
+        "repo": "codebase-memory-mcp",
+        "rev": "e783f73d752f83b689451e3a7e48061cda1202f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DeusData",
+        "repo": "codebase-memory-mcp",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -78,6 +98,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1790578696,
+        "narHash": "sha256-ZoxIApko70jCdbH3l20HWXOBaT2HZd87orzd2yJ9dVE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "7a0f122f5090cf4c2ade2a13a0e229d4e19ba71f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -104,8 +140,10 @@
     "root": {
       "inputs": {
         "claudeCode": "claudeCode",
+        "codebaseMemoryMcp": "codebaseMemoryMcp",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
         "umu": "umu"
       }

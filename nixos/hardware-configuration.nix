@@ -20,6 +20,17 @@
 
   boot.initrd.luks.devices."luks-f3f89923-1957-446d-a253-a68d866fa7f7".device = "/dev/disk/by-uuid/f3f89923-1957-446d-a253-a68d866fa7f7";
 
+  # Swap partition's LUKS device was never wired up here (nixos-generate-config
+  # only auto-detects the root filesystem's crypt device), so systemd waited
+  # the default 90s device timeout for it on every boot before giving up.
+  # Unlocked via a keyfile embedded in the initrd so it doesn't need a second
+  # passphrase prompt; see AGENTS.md/docs for the one-time enrollment command.
+  boot.initrd.secrets."/etc/secrets/initrd/swap.key" = "/etc/secrets/initrd/swap.key";
+  boot.initrd.luks.devices."luks-c98be56d-3362-4aa0-9bfb-d208a774ebad" = {
+    device = "/dev/disk/by-uuid/c98be56d-3362-4aa0-9bfb-d208a774ebad";
+    keyFile = "/etc/secrets/initrd/swap.key";
+  };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/10C4-F309";
       fsType = "vfat";

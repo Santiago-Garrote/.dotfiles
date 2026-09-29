@@ -1,4 +1,8 @@
-{ umuPackage, claudeCodePackage }:
+{
+  umuPackage,
+  claudeCodePackage,
+  codebaseMemoryMcpPackage,
+}:
 
 { pkgs, ... }:
 
@@ -15,6 +19,7 @@ in
         theme
         umuPackage
         claudeCodePackage
+        codebaseMemoryMcpPackage
         ;
     })
     (import ./services { inherit pkgs theme; })
