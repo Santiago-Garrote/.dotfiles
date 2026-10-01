@@ -15,6 +15,7 @@
     ./security.nix
     ./ssh.nix
     ./state-version.nix
+    ./tailscale.nix
     ./users.nix
   ];
 }
