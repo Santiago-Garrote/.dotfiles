@@ -10,6 +10,7 @@
     nixfmt
     tree
     tmux
+    openssl
 
     # Desktop applications.
     vesktop
