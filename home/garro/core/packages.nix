@@ -18,5 +18,6 @@
     codex
     zathura
     signal-desktop
+    prismlauncher
   ];
 }
