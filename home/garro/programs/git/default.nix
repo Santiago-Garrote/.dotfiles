@@ -1,47 +1,27 @@
 let
-  personalProfile = {
-    name = "Santiago-Garrote";
-    email = "santiagogarrote2005@gmail.com";
-  };
+  profiles = import ../dev-profiles/profiles.nix;
 
-  facultyProfile = {
-    name = "GarroteSantiago";
-    email = "sgarrote@mail.austral.edu.ar";
-  };
+  sshConfigPath = profileName: "~/.config/ssh/profiles/${profileName}";
 
-  profileEnvrc = profileName: profile: sshConfig: ''
-    export DEVELOPMENT_PROFILE="${profileName}"
-    export GIT_AUTHOR_NAME="${profile.name}"
-    export GIT_AUTHOR_EMAIL="${profile.email}"
-    export GIT_COMMITTER_NAME="${profile.name}"
-    export GIT_COMMITTER_EMAIL="${profile.email}"
-    export GIT_SSH_COMMAND="ssh -F ${sshConfig}"
-    export CLAUDE_CONFIG_DIR="$HOME/.claude/accounts/${profileName}"
-    export GH_CONFIG_DIR="$HOME/.config/gh-${profileName}"
-  '';
-
-  profileGitConfig = profile: sshConfig: ''
+  profileGitConfig = profileName: profile: ''
     [user]
       name = ${profile.name}
       email = ${profile.email}
     [core]
-      sshCommand = ssh -F ${sshConfig}
+      sshCommand = ssh -F ${sshConfigPath profileName}
   '';
 
   globalGitConfig = ''
     [init]
       defaultBranch = main
     [user]
-      name = ${personalProfile.name}
-      email = ${personalProfile.email}
+      name = ${profiles.personal.name}
+      email = ${profiles.personal.email}
     [includeIf "gitdir:~/dev/personal/"]
       path = ~/.config/git/profiles/personal.gitconfig
     [includeIf "gitdir:~/dev/faculty/"]
       path = ~/.config/git/profiles/faculty.gitconfig
   '';
-
-  personalSshConfig = "~/.config/ssh/profiles/personal";
-  facultySshConfig = "~/.config/ssh/profiles/faculty";
 in
 {
   programs.git.enable = true;
@@ -49,10 +29,7 @@ in
 
   home.file.".gitconfig".text = globalGitConfig;
   xdg.configFile."git/profiles/personal.gitconfig".text =
-    profileGitConfig personalProfile personalSshConfig;
+    profileGitConfig "personal" profiles.personal;
   xdg.configFile."git/profiles/faculty.gitconfig".text =
-    profileGitConfig facultyProfile facultySshConfig;
-
-  home.file."dev/personal/.envrc".text = profileEnvrc "personal" personalProfile personalSshConfig;
-  home.file."dev/faculty/.envrc".text = profileEnvrc "faculty" facultyProfile facultySshConfig;
+    profileGitConfig "faculty" profiles.faculty;
 }

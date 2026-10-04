@@ -1,6 +1,5 @@
 let
-  personalIdentityFile = "~/.ssh/id_ed25519";
-  facultyIdentityFile = "~/.ssh/id_ed25519_austral";
+  profiles = import ../dev-profiles/profiles.nix;
 
   profileConfig = identityFile: ''
     Host *
@@ -10,6 +9,8 @@ let
   '';
 in
 {
-  xdg.configFile."ssh/profiles/personal".text = profileConfig personalIdentityFile;
-  xdg.configFile."ssh/profiles/faculty".text = profileConfig facultyIdentityFile;
+  home.sessionVariables.SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
+
+  xdg.configFile."ssh/profiles/personal".text = profileConfig profiles.personal.sshIdentityFile;
+  xdg.configFile."ssh/profiles/faculty".text = profileConfig profiles.faculty.sshIdentityFile;
 }
