@@ -12,6 +12,8 @@
     ./bash
     ./direnv
     ./browsers
+    (import ./desktop-apps { inherit pkgs; })
+    ./dev-profiles
     ./git
     (import ./hyprlock { inherit theme; })
     (import ./kitty { inherit theme; })
