@@ -57,6 +57,8 @@
       overlays = [
         (final: _prev: {
           dseg = final.callPackage ./packages/dseg.nix { };
+        })
+        (_final: _prev: {
           inherit (unstablePkgs) signal-desktop;
         })
       ];
