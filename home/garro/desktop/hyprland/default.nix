@@ -42,9 +42,11 @@ in
     })
 
     -- HDMI output clones the internal display
+    -- Pinned to 1920x1080: "preferred" picked a mode on the TV that
+    -- negotiated a wrong color range/space, producing a violet tint.
     hl.monitor({
       output = "HDMI-A-1",
-      mode = "preferred",
+      mode = "1920x1080@60",
       position = "auto",
       mirror = "eDP-1",
     })
