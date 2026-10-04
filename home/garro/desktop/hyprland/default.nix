@@ -61,14 +61,6 @@ in
     local terminal = "kitty"
     local menu = "hyprlauncher"
 
-    -------------------
-    ---- AUTOSTART ----
-    -------------------
-
-    hl.on("hyprland.start", function ()
-      hl.exec_cmd("quickshell --no-duplicate")
-    end)
-
     ---------------------
     ---- ENVIRONMENT ----
     ---------------------
