@@ -4,8 +4,8 @@
     description = "Santiago Garrote";
 
     extraGroups = [
-      "networkmanager"
-      "wheel"
+      "networkmanager" # manage network connections without root
+      "wheel" # sudo access
     ];
   };
 }
