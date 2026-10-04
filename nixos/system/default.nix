@@ -1,6 +1,7 @@
 {
   imports = [
     ./boot.nix
+    ./dns.nix
     ./flatpak.nix
     ./fonts.nix
     ./graphics.nix
