@@ -11,14 +11,6 @@
     tree
     tmux
     openssl
-
-    # Desktop applications.
-    vesktop
-    inkscape
-    krita
     codex
-    zathura
-    signal-desktop
-    prismlauncher
   ];
 }
