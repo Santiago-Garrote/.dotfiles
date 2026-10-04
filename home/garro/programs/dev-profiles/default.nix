@@ -10,7 +10,7 @@ let
     export GIT_COMMITTER_NAME="${profile.name}"
     export GIT_COMMITTER_EMAIL="${profile.email}"
     export GIT_SSH_COMMAND="ssh -F ${sshConfigPath profileName}"
-    export CLAUDE_CONFIG_DIR="$HOME/.claude/accounts/${profileName}"
+    export CLAUDE_CONFIG_DIR="$HOME/.claude/accounts/${profile.claudeAccount}"
     export GH_CONFIG_DIR="$HOME/.config/gh-${profileName}"
   '';
 in
